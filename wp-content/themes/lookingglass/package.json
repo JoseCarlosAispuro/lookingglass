@@ -1,0 +1,61 @@
+{
+    "name": "ui-blocks",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build && cp dist/theme.json theme.json",
+        "watch": "vite build --watch",
+        "preview": "vite preview",
+        "type-check": "tsc --noEmit",
+        "lint": "biome lint .",
+        "lint:fix": "biome lint --write .",
+        "format": "biome format --write .",
+        "format:check": "biome format .",
+        "check": "biome check .",
+        "check:fix": "biome check --write .",
+        "prepare": "cd ../../../ && husky wp-content/themes/lookingglass/.husky",
+        "wp:config": "node scripts/create-wp-config.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "packageManager": "pnpm@10.29.3",
+    "dependencies": {
+        "@fancyapps/ui": "^6.1.10",
+        "@vimeo/player": "^2.30.1",
+        "motion": "^12.23.26",
+        "swiper": "^12.1.2",
+        "tailwindcss": "^4.1.14",
+        "vanilla-calendar-pro": "^3.1.0",
+        "vanilla-sharing": "^6.1.2",
+        "vite-plugin-static-copy": "^3.1.4"
+    },
+    "devDependencies": {
+        "@biomejs/biome": "^2.2.6",
+        "@roots/vite-plugin": "^1.2.1",
+        "@tailwindcss/vite": "^4.1.14",
+        "@types/jquery": "^3.5.33",
+        "@types/node": "^24.8.0",
+        "@types/swiper": "^6.0.0",
+        "@vitejs/plugin-legacy": "^7.2.1",
+        "husky": "^9.1.7",
+        "lint-staged": "^16.2.5",
+        "livereload": "^0.10.3",
+        "typescript": "^5.9.3",
+        "vite": "^7.1.10"
+    },
+    "lint-staged": {
+        "*.{js,ts,tsx}": [
+            "biome check --write --files-ignore-unknown=true"
+        ],
+        "!(acf-json)/**/*.json": [
+            "biome check --write --files-ignore-unknown=true"
+        ],
+        "*.{ts,tsx}": [
+            "bash -c 'tsc --noEmit --skipLibCheck'"
+        ]
+    }
+}

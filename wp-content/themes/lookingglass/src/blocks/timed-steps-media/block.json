@@ -1,0 +1,35 @@
+{
+    "name": "acf/timed-steps-media",
+    "apiVersion": 3,
+    "title": "Timed Steps Media",
+    "description": "Hero component with timed auto-advancing steps, background images, and CTA panel.",
+    "category": "layout",
+    "icon": "slides",
+    "keywords": ["steps", "timed", "hero", "media"],
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "../block.php"
+    },
+    "supports": {
+        "anchor": true,
+        "className": true,
+        "align": ["full"],
+        "color": {
+            "text": false
+        }
+    },
+    "attributes": {
+        "backgroundColor": {
+            "type": "string",
+            "default": "black"
+        }
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": {
+                "preview_image": "/dist/images/previews/timed-steps-media.jpg"
+            }
+        }
+    }
+}

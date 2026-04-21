@@ -1,0 +1,148 @@
+{
+    "key": "group_69a6b1c2d3e4f",
+    "title": "Condensed Contact Info Card",
+    "fields": [
+        {
+            "key": "field_69a6b1c2a0001",
+            "label": "Marquee Text",
+            "name": "marquee_text",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Scrolling text displayed in the black ribbon above the contact card.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "e.g. GET IN TOUCH",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_69a6b1c2a0002",
+            "label": "Heading",
+            "name": "heading",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Card heading. Defaults to \"CONTACT INFO\" if left empty.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "CONTACT INFO",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "CONTACT INFO",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_69a6b1c2a0003",
+            "label": "Address Label",
+            "name": "address_label",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "The address text displayed in the card.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "e.g. 821 N Michigan Ave, Chicago, IL 60611",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_69a6b1c2a0004",
+            "label": "Address Link",
+            "name": "address_link",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "Optional custom maps URL. If left empty, a Google Maps search link will be generated from the address label.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "allow_in_bindings": 0,
+            "placeholder": "https://maps.google.com/..."
+        },
+        {
+            "key": "field_69a6b1c2a0005",
+            "label": "Phone",
+            "name": "phone",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Phone number. On desktop, the icon copies to clipboard. On mobile, it opens the dialer.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "e.g. (312) 337-0665",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_69a6b1c2a0006",
+            "label": "Email",
+            "name": "email",
+            "aria-label": "",
+            "type": "email",
+            "instructions": "Email address. The icon copies it to clipboard.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "allow_in_bindings": 0,
+            "placeholder": "e.g. info@lookingglasstheatre.org",
+            "prepend": "",
+            "append": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf\/condensed-contact-info-card"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "display_title": "",
+    "modified": 1738886400
+}

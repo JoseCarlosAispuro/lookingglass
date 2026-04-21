@@ -1,0 +1,35 @@
+{
+    "name": "acf/address-cards",
+    "apiVersion": 3,
+    "title": "Address Cards",
+    "description": "",
+    "category": "layout",
+    "icon": "location-alt",
+    "keywords": ["address", "card", "location"],
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "../block.php"
+    },
+    "supports": {
+        "anchor": true,
+        "className": true,
+        "align": ["full"],
+        "color": {
+            "text": false
+        }
+    },
+    "attributes": {
+        "backgroundColor": {
+            "type": "string",
+            "default": "white"
+        }
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": {
+                "preview_image": "/dist/images/previews/address-cards.jpg"
+            }
+        }
+    }
+}

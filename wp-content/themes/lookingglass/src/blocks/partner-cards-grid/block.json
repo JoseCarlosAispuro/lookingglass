@@ -1,0 +1,29 @@
+{
+    "name": "acf/partner-cards-grid",
+    "apiVersion": 3,
+    "title": "Partner Cards Grid Block",
+    "description": "Full-width Partner Cards Grid section with customizable heading, background color, intro copy, and partners list",
+    "category": "layout",
+    "icon": "menu",
+    "keywords": ["partners", "cards", "grid"],
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "../block.php"
+    },
+    "supports": {
+        "anchor": true,
+        "className": true,
+        "align": ["full"],
+        "color": {
+            "text": false
+        }
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": {
+                "preview_image": "/dist/images/previews/partner-cards-grid.png"
+            }
+        }
+    }
+}

@@ -1,0 +1,10 @@
+[data-marquee-track] {
+    animation: lg-marquee var(--marquee-duration, 20s) linear infinite;
+}
+@keyframes lg-marquee {
+    from { transform: translate3d(0, 0, 0); }
+    to   { transform: translate3d(var(--marquee-distance, -50%), 0, 0); }
+}
+@media (prefers-reduced-motion: reduce) {
+    [data-marquee-track] { animation: none !important; transform: none !important; }
+}

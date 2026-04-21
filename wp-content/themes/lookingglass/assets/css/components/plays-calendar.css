@@ -1,0 +1,75 @@
+[data-calendar] {
+    @apply !p-0 !rounded-none !bg-transparent;
+}
+
+[data-calendar] .vc-header {
+    @apply !bg-black-100 text-black py-2 px-sm mb-0;
+}
+
+[data-calendar] .vc-header .vc-arrow {
+    @apply icon-opsz-32 flex items-center;
+}
+
+[data-calendar] .vc-header .vc-arrow::before{
+    @apply hidden;
+}
+[data-calendar] .vc-header .vc-header__content .vc-month {
+    @apply text-black uppercase text-[20px] md:text-[24px] leading-[1.2] font-saans font-semibold p-0;
+}
+
+[data-calendar] .vc-header .vc-header__content .vc-year {
+    @apply hidden;
+}
+
+[data-calendar] .vc-wrapper .vc-content .vc-week {
+    @apply bg-black-200 mb-0;
+}
+
+[data-calendar] .vc-wrapper .vc-content .vc-week .vc-week__day {
+    @apply !py-3.5 !px-2 uppercase font-semibold text-[16px] leading-[1.2] font-saans !text-black;
+}
+
+[data-calendar] .vc-wrapper .vc-content .vc-dates .vc-date {
+    @apply py-0;
+}
+
+[data-calendar] .vc-wrapper .vc-content .vc-dates .vc-date .vc-date__btn {
+    @apply font-thin text-[16px] leading-[1.2] font-saans bg-transparent h-12 rounded-full;
+
+    &:after {
+        content: '';
+        @apply absolute top-1/2 left-1/2 w-full aspect-square max-w-12 -translate-x-1/2 -translate-y-1/2 rounded-full -z-1;
+    }
+
+    &:hover {
+        @apply !bg-transparent;
+
+        &:after {
+            @apply !bg-black-100;
+        }
+    }
+}
+
+[data-calendar] .vc-wrapper .vc-content .vc-dates .vc-date[data-vc-date-month="current"] .vc-date__btn {
+    @apply text-black;
+}
+
+[data-calendar] .vc-wrapper .vc-content .vc-dates .vc-date[data-vc-date-month="next"] .vc-date__btn, [data-calendar] .vc-wrapper .vc-content .vc-dates .vc-date[data-vc-date-month="prev"] .vc-date__btn {
+    @apply text-black-100;
+}
+
+[data-calendar] .vc-wrapper .vc-content .vc-dates .vc-date[data-vc-date-today] .vc-date__btn {
+    @apply font-semibold;
+}
+
+[data-calendar] .vc-wrapper .vc-content .vc-dates .vc-date[data-vc-date-selected] .vc-date__btn {
+    @apply font-semibold text-white relative;
+
+    &:after {
+        @apply !bg-black;
+    }
+}
+
+[data-calendar] .vc-wrapper .vc-content .vc-dates .vc-date[data-vc-date-disabled] .vc-date__btn {
+    @apply text-disabled line-through font-semibold;
+}

@@ -1,0 +1,101 @@
+/* CF7 Custom Styling — matches original contact form design */
+
+/* Autofill fix for dark backgrounds */
+[data-cf7-form] input:-webkit-autofill,
+[data-cf7-form] input:-webkit-autofill:hover,
+[data-cf7-form] input:-webkit-autofill:focus,
+[data-cf7-form] textarea:-webkit-autofill {
+    -webkit-text-fill-color: var(--app-fg-color);
+    -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Reset CF7 default styles */
+[data-cf7-form] .wpcf7-form p {
+    @apply m-0;
+}
+
+/* Input & textarea base styles */
+[data-cf7-form] .wpcf7-form input[type='text'],
+[data-cf7-form] .wpcf7-form input[type='email'],
+[data-cf7-form] .wpcf7-form textarea {
+    @apply w-full border-0 border-b border-(--app-fg-color) bg-transparent p-sm font-saans text-xl md:text-2xl font-medium leading-[1.2] text-(--app-fg-color) outline-none transition-colors duration-200;
+}
+
+/* Textarea: full border + fixed height */
+[data-cf7-form] .wpcf7-form textarea {
+    @apply border border-(--app-fg-color) h-[200px] resize-none mt-6;
+}
+
+/* Placeholder */
+[data-cf7-form] .wpcf7-form input::placeholder,
+[data-cf7-form] .wpcf7-form textarea::placeholder {
+    @apply text-(--app-fg-color)/40;
+}
+
+/* Focus state */
+[data-cf7-form] .wpcf7-form input:focus,
+[data-cf7-form] .wpcf7-form textarea:focus {
+    @apply border-(--color-orange) outline-none;
+}
+
+/* Error state on invalid fields */
+[data-cf7-form] .wpcf7-form .wpcf7-not-valid {
+    @apply border-primary-red;
+}
+
+/* CF7 inline validation tips */
+[data-cf7-form] .wpcf7-form .wpcf7-not-valid-tip {
+    @apply text-inherit button-xs mt-2;
+}
+
+/* Form field spacing */
+[data-cf7-form] .wpcf7-form .form-field {
+    @apply mb-sm;
+}
+
+/* Submit button */
+[data-cf7-form] .wpcf7-form input[type='submit'] {
+    @apply inline-flex items-center justify-center w-full md:w-auto h-16 px-lg mt-12 border border-(--app-fg-color) bg-transparent text-(--app-fg-color) font-saans text-xl md:text-2xl font-medium leading-[1.2] cursor-pointer transition-colors duration-200;
+}
+
+[data-cf7-form] .wpcf7-form input[type='submit']:hover {
+    @apply bg-(--app-fg-color) text-(--app-bg-color);
+}
+
+[data-cf7-form] .wpcf7-form input[type='submit']:focus {
+    @apply border-(--color-orange) outline-none;
+}
+
+/* Loading/submitting state */
+[data-cf7-form] .wpcf7-form.submitting input[type='submit'] {
+    @apply opacity-50 cursor-wait;
+}
+
+/* Response output (success/error messages) */
+[data-cf7-form] .wpcf7-form .wpcf7-response-output {
+    @apply mt-sm p-sm border border-(--app-fg-color)/40 text-base;
+}
+
+[data-cf7-form] .wpcf7-form.sent .wpcf7-response-output {
+    @apply border-primary-green text-(--app-fg-color);
+}
+
+[data-cf7-form] .wpcf7-form.failed .wpcf7-response-output,
+[data-cf7-form] .wpcf7-form.aborted .wpcf7-response-output {
+    @apply border-primary-red text-primary-red;
+}
+
+/* Hide form fields after successful submission */
+[data-cf7-form] .wpcf7-form.sent .form-field,
+[data-cf7-form] .wpcf7-form.sent textarea,
+[data-cf7-form] .wpcf7-form.sent input[type='submit'],
+[data-cf7-form] .wpcf7-form.sent .submit-wrap {
+    @apply hidden;
+}
+
+/* CF7 spinner — restyle to match theme */
+[data-cf7-form] .wpcf7-spinner {
+    @apply inline-block w-5 h-5 ml-2 border-2 border-(--app-fg-color)/40 border-t-(--app-fg-color) rounded-full animate-spin;
+    background: none;
+}

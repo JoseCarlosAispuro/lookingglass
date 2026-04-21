@@ -1,0 +1,290 @@
+{
+    "key": "group_courses_listing",
+    "title": "Block - Courses Listing",
+    "fields": [
+        {
+            "key": "field_courses_section_heading",
+            "label": "Section Heading",
+            "name": "section_heading",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Large section heading, e.g. \"FIND YOUR STAGE\"",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "FIND YOUR STAGE",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_courses_section_intro",
+            "label": "Section Intro",
+            "name": "section_intro",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Optional introductory copy below the heading",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "rows": 3,
+            "new_lines": "br"
+        },
+        {
+            "key": "field_courses_repeater",
+            "label": "Courses",
+            "name": "courses",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "min": 1,
+            "max": 0,
+            "collapsed": "field_courses_course_title",
+            "button_label": "Add Course",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_courses_course_image",
+                    "label": "Course Image",
+                    "name": "course_image",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "Square image recommended",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "allow_in_bindings": 0,
+                    "preview_size": "medium",
+                    "parent_repeater": "field_courses_repeater"
+                },
+                {
+                    "key": "field_courses_course_title",
+                    "label": "Course Title",
+                    "name": "course_title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_courses_repeater"
+                },
+                {
+                    "key": "field_courses_course_description",
+                    "label": "Course Description",
+                    "name": "course_description",
+                    "aria-label": "",
+                    "type": "wysiwyg",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "allow_in_bindings": 0,
+                    "tabs": "visual",
+                    "toolbar": "basic",
+                    "media_upload": 0,
+                    "delay": 0,
+                    "parent_repeater": "field_courses_repeater"
+                },
+                {
+                    "key": "field_courses_course_date",
+                    "label": "Date",
+                    "name": "course_date",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "e.g. \"AUG 3 – 7\"",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "AUG 3 – 7",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_courses_repeater"
+                },
+                {
+                    "key": "field_courses_course_time",
+                    "label": "Time",
+                    "name": "course_time",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "e.g. \"9 AM – 3 PM\"",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "9 AM – 3 PM",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_courses_repeater"
+                },
+                {
+                    "key": "field_courses_course_ages",
+                    "label": "Ages",
+                    "name": "course_ages",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "e.g. \"6 – 10\"",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "33",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "6 – 10",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_courses_repeater"
+                },
+                {
+                    "key": "field_courses_course_max_enrollment",
+                    "label": "Max Enrollment",
+                    "name": "course_max_enrollment",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "e.g. \"20\"",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "33",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "20",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_courses_repeater"
+                },
+                {
+                    "key": "field_courses_course_price",
+                    "label": "Price",
+                    "name": "course_price",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "e.g. \"$450\"",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "33",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "$450",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_courses_repeater"
+                },
+                {
+                    "key": "field_courses_course_cta",
+                    "label": "CTA Link",
+                    "name": "course_cta",
+                    "aria-label": "",
+                    "type": "link",
+                    "instructions": "Sign up / register link",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "allow_in_bindings": 0,
+                    "parent_repeater": "field_courses_repeater"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf\/courses-listing"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "display_title": "",
+    "modified": 1770700000
+}

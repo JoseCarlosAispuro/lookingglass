@@ -1,0 +1,35 @@
+{
+    "name": "acf/timeline",
+    "apiVersion": 3,
+    "title": "Timeline Reel",
+    "description": "Interactive timeline with horizontally-scrolling milestones, year odometer effect, and multiple image layout templates.",
+    "category": "layout",
+    "icon": "clock",
+    "keywords": ["timeline", "reel", "milestones", "history"],
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "../block.php"
+    },
+    "supports": {
+        "anchor": true,
+        "className": true,
+        "align": ["full"],
+        "color": {
+            "text": false
+        }
+    },
+    "attributes": {
+        "backgroundColor": {
+            "type": "string",
+            "default": "black"
+        }
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": {
+                "preview_image": "/dist/images/previews/timeline.jpg"
+            }
+        }
+    }
+}

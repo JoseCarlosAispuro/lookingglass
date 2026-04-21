@@ -1,0 +1,31 @@
+{
+    "name": "acf/media-gallery",
+    "apiVersion": 3,
+    "title": "Media Gallery",
+    "description": "Horizontal media gallery reel with Fancybox lightbox for images and videos.",
+    "category": "layout",
+    "icon": "format-gallery",
+    "keywords": ["gallery", "media", "fancybox", "lightbox"],
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "../block.php"
+    },
+    "supports": {
+        "customClassName": true,
+        "anchor": true,
+        "className": true,
+        "align": ["full"],
+        "color": {
+            "background": true,
+            "text": false
+        }
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": {
+                "preview_image": "/dist/images/previews/media-gallery.jpg"
+            }
+        }
+    }
+}

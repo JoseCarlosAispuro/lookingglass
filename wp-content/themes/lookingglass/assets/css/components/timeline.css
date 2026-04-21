@@ -1,0 +1,58 @@
+/* Timeline Reel Component */
+
+/* Main Swiper: fill the image stage */
+[data-timeline-main-swiper],
+[data-timeline-main-swiper] .swiper-wrapper,
+[data-timeline-main-swiper] .swiper-slide {
+    height: 100% !important;
+}
+
+/* Card active/inactive states (Swiper manages .swiper-slide-thumb-active) */
+.timeline-card {
+    opacity: 0.4;
+    transition: opacity 0.3s ease-out;
+}
+
+.swiper-slide-thumb-active.timeline-card {
+    opacity: 1;
+}
+
+/* Odometer digit strip */
+[data-timeline-digit-wrapper] {
+    line-height: 1;
+}
+
+[data-timeline-digit] {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Modal open/closed transitions */
+[data-timeline-modal][data-state='closed'] {
+    opacity: 0;
+    transform: translateY(24px);
+    pointer-events: none;
+}
+
+[data-timeline-modal][data-state='open'] {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+/* Custom cursor color override for timeline */
+[data-timeline] [data-custom-cursor-inner] {
+    --app-hl-bg-color: #ff9217;
+    --app-hl-color: black;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .timeline-card {
+        transition: none;
+    }
+
+    [data-timeline-modal] {
+        transition: none;
+    }
+}

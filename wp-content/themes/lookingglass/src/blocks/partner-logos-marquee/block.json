@@ -1,0 +1,35 @@
+{
+    "name": "acf/partner-logos-marquee",
+    "title": "Partner Logos Marquee",
+    "description": "Scrolling marquee component displaying community partner logos in a continuous horizontal loop.",
+    "category": "formatting",
+    "icon": "slides",
+    "keywords": ["partner", "logos", "marquee", "sponsors", "community"],
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "../block.php"
+    },
+    "supports": {
+        "align": false,
+        "anchor": true,
+        "customClassName": true,
+        "jsx": false,
+        "color": {
+            "text": false
+        }
+    },
+    "attributes": {
+        "backgroundColor": {
+            "type": "string",
+            "default": "black"
+        }
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": {
+                "preview_image": "/dist/images/previews/partner-logos-marquee.jpg"
+            }
+        }
+    }
+}

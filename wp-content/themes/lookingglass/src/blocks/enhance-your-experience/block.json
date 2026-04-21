@@ -1,0 +1,35 @@
+{
+    "name": "acf/enhance-your-experience",
+    "apiVersion": 3,
+    "title": "Enhance Your Experience",
+    "description": "Content block with heading, rich text, and hover-based image swap.",
+    "category": "layout",
+    "icon": "format-gallery",
+    "keywords": ["enhance", "experience", "image", "swap"],
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "../block.php"
+    },
+    "supports": {
+        "anchor": true,
+        "className": true,
+        "align": ["full"],
+        "color": {
+            "text": false
+        }
+    },
+    "attributes": {
+        "backgroundColor": {
+            "type": "string",
+            "default": "white"
+        }
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": {
+                "preview_image": "/dist/images/previews/enhance-your-experience.jpg"
+            }
+        }
+    }
+}

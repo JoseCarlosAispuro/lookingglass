@@ -1,0 +1,35 @@
+{
+    "name": "acf/image-info-banner",
+    "apiVersion": 3,
+    "title": "Image Info Banner Block",
+    "description": "Full-width Image Info Banner section with customizable headline, background image, and copy",
+    "category": "layout",
+    "icon": "menu",
+    "keywords": ["image", "info", "banner", "background"],
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "../block.php"
+    },
+    "supports": {
+        "anchor": true,
+        "className": true,
+        "align": ["full"],
+        "color": {
+            "text": false
+        }
+    },
+    "attributes": {
+        "backgroundColor": {
+            "type": "string",
+            "default": "black"
+        }
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": {
+                "preview_image": "/dist/images/previews/image-info-banner.png"
+            }
+        }
+    }
+}

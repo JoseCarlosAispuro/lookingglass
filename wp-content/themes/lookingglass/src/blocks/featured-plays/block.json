@@ -1,0 +1,37 @@
+{
+    "name": "acf/featured-plays",
+    "apiVersion": 3,
+    "title": "Featured Plays",
+    "description": "Editorial listing component that highlights manually selected Plays with image, dates, description, and a deep link.",
+    "category": "layout",
+    "icon": "star-filled",
+    "keywords": ["plays", "featured", "premieres"],
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "../block.php"
+    },
+    "supports": {
+        "customClassName": true,
+        "anchor": true,
+        "className": true,
+        "align": ["full"],
+        "color": {
+            "background": true,
+            "text": false
+        }
+    },
+    "attributes": {
+        "backgroundColor": {
+            "type": "string",
+            "default": "white"
+        }
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": {
+                "preview_image": "/dist/images/previews/featured-plays.jpg"
+            }
+        }
+    }
+}

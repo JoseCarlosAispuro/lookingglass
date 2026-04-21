@@ -1,0 +1,26 @@
+{
+    "name": "acf/icon-cta",
+    "apiVersion": 3,
+    "title": "Icon CTA",
+    "description": "Helper block created to include into another blocks",
+    "category": "helper",
+    "icon": "insert",
+    "keywords": ["button", "icon", "cta", "copy", "clipboard"],
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "../block.php"
+    },
+    "supports": {
+        "anchor": true,
+        "className": true,
+        "align": ["full"]
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": {
+                "preview_image": "/dist/images/previews/icon-cta.jpg"
+            }
+        }
+    }
+}

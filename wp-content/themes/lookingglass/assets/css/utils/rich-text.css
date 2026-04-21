@@ -1,0 +1,90 @@
+[data-rich-text] {
+}
+
+[data-rich-text] b,
+[data-rich-text] strong {
+    @apply font-semibold;
+}
+
+[data-rich-text] a {
+    @apply inline-flex flex-row-reverse items-center gap-[0.125rem] relative font-medium;
+
+    /* Animated underline */
+    @apply animated-underline after:bottom-[3px];
+}
+
+/* Arrow Icon */
+[data-rich-text] a::before {
+    font-family: "Material Symbols Outlined";
+    content: "arrow_outward";
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-smoothing: antialiased;
+}
+
+[data-rich-text].no-icon-link a {
+    @apply before:content-[none] font-normal after:h-px;
+}
+
+[data-rich-text] p + p,
+[data-rich-text] h6 + p,
+[data-rich-text] p + div,
+[data-rich-text] div + p,
+[data-rich-text] div + div {
+    margin-top: 1em;
+}
+
+[data-rich-text] ul {
+    @apply list-disc pl-4 md:pl-8;
+}
+
+[data-rich-text] p + ul {
+    @apply list-disc mt-4 md:mt-8 pl-4 md:pl-6;
+}
+
+[data-rich-text].no-ul-spacing ul {
+    @apply list-disc mt-0 md:mt-0;
+}
+
+[data-rich-text].sm-list ul li {
+    @apply text-[16px] leading-[1.2] font-saans;
+}
+
+[data-rich-text].normalized-line-height ul li {
+    @apply leading-[1.2];
+}
+
+[data-rich-text].md-list ul li {
+    @apply font-saans md:text-[20px] md:leading-[1.2] text-[18px];
+}
+
+[data-rich-text].heading-strong strong {
+    @apply font-saans font-bold text-[24px] leading-[1];
+}
+
+[data-rich-text][data-legal-text] h2 {
+    @apply headline-5 uppercase md:mt-14 md:mb-2;
+}
+
+[data-rich-text][data-legal-text] h3 {
+    @apply headline-6 uppercase mt-8 md:mt-14 md:mb-2;
+}
+
+[data-rich-text][data-legal-text] h2:first-child,
+[data-rich-text][data-legal-text] h3:first-child {
+    @apply mt-8 md:mt-14;
+}
+
+/* Heading bottom spaging*/
+[data-rich-text].hb-spacing h2:has(+ p),
+[data-rich-text].hb-spacing h3:has(+ p) {
+    @apply md:mb-8;
+}

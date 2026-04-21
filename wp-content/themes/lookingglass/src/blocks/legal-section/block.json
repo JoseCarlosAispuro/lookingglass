@@ -1,0 +1,43 @@
+{
+    "name": "acf/legal-section",
+    "apiVersion": 3,
+    "title": "Legal Section",
+    "description": "",
+    "category": "layout",
+    "icon": "media-text",
+    "keywords": [
+        "legal",
+        "terms",
+        "privacy",
+        "policies",
+        "section",
+        "text",
+        "content"
+    ],
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "../block.php"
+    },
+    "supports": {
+        "anchor": true,
+        "className": true,
+        "align": ["full"],
+        "color": {
+            "text": false
+        }
+    },
+    "attributes": {
+        "backgroundColor": {
+            "type": "string",
+            "default": "white"
+        }
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": {
+                "preview_image": "/dist/images/previews/legal-section.jpg"
+            }
+        }
+    }
+}

@@ -1,0 +1,33 @@
+{
+    "name": "acf/shop-promo-banner",
+    "title": "Shop Promo Banner Block",
+    "description": "A shop promo banner block to demonstrate the new flat file structure",
+    "category": "common",
+    "icon": "cart",
+    "keywords": ["shop", "promo", "banner"],
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "../block.php"
+    },
+    "supports": {
+        "anchor": true,
+        "className": true,
+        "color": {
+            "text": false
+        }
+    },
+    "attributes": {
+        "backgroundColor": {
+            "type": "string",
+            "default": "black"
+        }
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": {
+                "preview_image": "/dist/images/previews/shop-promo-banner.png"
+            }
+        }
+    }
+}

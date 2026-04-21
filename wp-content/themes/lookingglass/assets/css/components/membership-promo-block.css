@@ -1,0 +1,41 @@
+/* Membership Promo Block Component */
+
+[data-membership-promo] .swiper {
+    overflow: visible;
+}
+
+[data-membership-promo] .swiper-slide {
+    opacity: 0 !important;
+    transition: opacity 0.4s ease;
+}
+
+[data-membership-promo] .swiper-slide-active {
+    opacity: 1 !important;
+}
+
+/* Navigation buttons reset */
+[data-membership-promo] .swiper-button-prev,
+[data-membership-promo] .swiper-button-next {
+    color: currentColor;
+}
+
+[data-membership-promo] .swiper-button-prev::after,
+[data-membership-promo] .swiper-button-next::after {
+    display: none;
+}
+
+/* Custom cursor container */
+[data-membership-promo] [data-custom-cursor] {
+    overflow: visible;
+}
+
+[data-membership-promo] [data-custom-cursor] > [data-custom-cursor] {
+    z-index: 50;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    [data-membership-promo] .swiper-slide {
+        transition: none;
+    }
+}

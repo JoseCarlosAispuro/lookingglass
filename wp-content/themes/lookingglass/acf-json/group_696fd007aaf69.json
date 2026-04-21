@@ -1,0 +1,64 @@
+{
+    "key": "group_696fd007aaf69",
+    "title": "CTA Button Component",
+    "fields": [
+        {
+            "key": "field_696fd007bd789",
+            "label": "Button Link",
+            "name": "button_link",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "Configure button URL and label. Label should be action-oriented (1-3 words recommended). Examples: \"Get tickets\", \"Learn more\", \"Join now\"",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "allow_in_bindings": 0
+        },
+        {
+            "key": "field_696fdb4bbd78e",
+            "label": "ARIA Label (Optional)",
+            "name": "button_aria_label",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Optional override for screen readers. Use only if the visible label needs additional context.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "Open ticket purchase page in new window",
+            "prepend": "",
+            "append": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf\/button-block"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "display_title": "",
+    "modified": 1769049600
+}

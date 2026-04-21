@@ -1,0 +1,33 @@
+/* Partner Logos Marquee Component */
+
+body[data-dynamic-bg="true"][data-dynamic-bg-theme="dark"] [data-partner-logos-marquee] [data-marquee-track] img,
+[data-partner-logos-marquee] [data-marquee-track] img {
+    filter: brightness(0) invert(1); /* Ensure logos are white on dark background */
+}
+
+body[data-dynamic-bg="true"][data-dynamic-bg-theme="white"] [data-block-background-color="black"] [data-partner-logos-marquee] [data-marquee-track] img { 
+    filter: brightness(1) invert(1);
+}
+
+body[data-dynamic-bg="true"][data-dynamic-bg-theme="white"] [data-partner-logos-marquee] [data-marquee-track] img {
+    filter: unset;
+}
+
+/* Reduced motion: show logos in a static grid */
+@media (prefers-reduced-motion: reduce) {
+    [data-partner-logos-marquee] [data-marquee-track] {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 40px;
+        padding: 0 20px;
+    }
+
+    [data-partner-logos-marquee] [data-marquee-text] {
+        padding-right: 0 !important;
+    }
+
+    /* Hide cloned elements in reduced motion mode */
+    [data-partner-logos-marquee] [data-marquee-clone] {
+        display: none;
+    }
+}

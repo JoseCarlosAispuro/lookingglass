@@ -1,0 +1,35 @@
+{
+    "name": "acf/editorial-quote",
+    "apiVersion": 3,
+    "title": "Editorial Quote",
+    "description": "",
+    "category": "layout",
+    "icon": "format-gallery",
+    "keywords": ["quote", "image", "text", "content", "swap"],
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "../block.php"
+    },
+    "supports": {
+        "anchor": true,
+        "className": true,
+        "align": ["full"],
+        "color": {
+            "text": false
+        }
+    },
+    "attributes": {
+        "backgroundColor": {
+            "type": "string",
+            "default": "black"
+        }
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": {
+                "preview_image": "/dist/images/previews/editorial-quote.jpg"
+            }
+        }
+    }
+}

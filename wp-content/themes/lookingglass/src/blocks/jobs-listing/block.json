@@ -1,0 +1,42 @@
+{
+    "apiVersion": 3,
+    "name": "acf/jobs-listing",
+    "title": "Jobs Listing",
+    "description": "Display job listings with load more functionality. Each job links to an external destination or PDF.",
+    "category": "layout",
+    "icon": "clipboard",
+    "keywords": ["jobs", "careers", "listing", "positions"],
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "../block.php"
+    },
+    "supports": {
+        "align": false,
+        "anchor": true,
+        "customClassName": true,
+        "jsx": false,
+        "color": {
+            "link": false,
+            "gradients": false,
+            "text": false
+        }
+    },
+    "attributes": {
+        "backgroundColor": {
+            "type": "string",
+            "default": "black"
+        },
+        "textColor": {
+            "type": "string",
+            "default": "white"
+        }
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": {
+                "preview_image": "/dist/images/previews/jobs-listing.jpg"
+            }
+        }
+    }
+}

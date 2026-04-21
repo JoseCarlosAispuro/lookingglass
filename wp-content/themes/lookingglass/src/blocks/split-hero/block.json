@@ -1,0 +1,35 @@
+{
+    "name": "acf/split-hero",
+    "apiVersion": 3,
+    "title": "Split Hero (Two Images)",
+    "description": "Hero component with headline, optional eyebrow/tagline, description, and two asymmetric editorial images.",
+    "category": "layout",
+    "icon": "format-gallery",
+    "keywords": ["hero", "split", "images", "editorial"],
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "../block.php"
+    },
+    "supports": {
+        "anchor": true,
+        "className": true,
+        "align": ["full"],
+        "color": {
+            "text": false
+        }
+    },
+    "attributes": {
+        "backgroundColor": {
+            "type": "string",
+            "default": "white"
+        }
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": {
+                "preview_image": "/dist/images/previews/split-hero.jpg"
+            }
+        }
+    }
+}

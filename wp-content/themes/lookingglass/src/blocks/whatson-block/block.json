@@ -1,0 +1,35 @@
+{
+    "name": "acf/whatson-block",
+    "apiVersion": 3,
+    "title": "What's On Block",
+    "description": "A block to showcase upcoming events or activities",
+    "category": "common",
+    "icon": "admin-tools",
+    "keywords": ["what's on", "events", "activities"],
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "../block.php"
+    },
+    "supports": {
+        "anchor": true,
+        "className": true,
+        "align": ["left", "center", "right", "wide", "full"],
+        "color": {
+            "text": true
+        }
+    },
+    "attributes": {
+        "backgroundColor": {
+            "type": "string",
+            "default": "black"
+        }
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": {
+                "preview_image": "/dist/images/previews/whatson-block.jpg"
+            }
+        }
+    }
+}

@@ -1,0 +1,71 @@
+/* Tabs Component */
+
+[data-tabs-wrapper] {
+    --open-width: 100px;
+    @apply md:min-h-0 h-min w-full flex flex-col md:flex-row gap-4;
+}
+
+[data-tabs-wrapper] [data-tab] {
+    @apply relative border border-solid border-disabled rounded-lg p-4 flex flex-col md:basis-22 md:grow-0 min-w-0 transition-all duration-300 ease-out;
+}
+
+[data-tabs-wrapper] [data-tab] [data-tab-preview] {
+    @apply relative md:absolute flex md:mb-auto md:rotate-180 z-1 transition-all duration-200 ease-out;
+}
+
+[data-tabs-wrapper] [data-tab] [data-tab-preview] .tab-icon-plus,
+[data-tabs-wrapper] [data-tab] [data-tab-preview] .tab-icon-minus {
+    @apply transition-opacity duration-300 ease-out;
+}
+
+[data-tabs-wrapper] [data-tab] [data-tab-preview] .tab-icon-plus {
+    @apply opacity-100;
+}
+
+[data-tabs-wrapper] [data-tab] [data-tab-preview] .tab-icon-minus {
+    @apply opacity-0;
+}
+
+[data-tabs-wrapper] [data-tab] [data-tab-inner] {
+    @apply absolute inset-0 md:relative flex flex-col gap-y-4 h-full transition-all duration-300 ease-out min-w-(--open-width);
+}
+
+[data-tabs-wrapper] [data-tab] [data-tab-inner] > * {
+    @apply opacity-0 transition-all duration-100 ease-out;
+}
+
+/* Open Tab */
+[data-tabs-wrapper] [data-tab].open {
+    @apply md:grow bg-(--app-fg-color)/10 border-transparent;
+}
+
+[data-tabs-wrapper] [data-tab].open [data-tab-preview] {
+    @apply block md:opacity-0 mb-4;
+}
+
+[data-tabs-wrapper] [data-tab].open [data-tab-preview] .tab-icon-plus {
+    @apply opacity-0;
+}
+
+[data-tabs-wrapper] [data-tab].open [data-tab-preview] .tab-icon-minus {
+    @apply opacity-100;
+}
+
+[data-tabs-wrapper] [data-tab].open > button {
+    @apply pointer-events-none;
+}
+
+[data-tabs-wrapper] [data-tab].open [data-tab-inner] {
+    @apply relative;
+}
+
+[data-tabs-wrapper] [data-tab].open [data-tab-inner] > * {
+    @apply opacity-100;
+}
+
+
+@media (min-width: 1024px) {
+    [data-tabs-wrapper] [data-tab] [data-tab-preview] {
+        writing-mode: vertical-rl;
+    }
+}

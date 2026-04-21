@@ -1,0 +1,34 @@
+{
+    "name": "acf/scrolled-pin-focus-areas",
+    "title": "Scrolled Pin Focus Areas",
+    "description": "Scroll-driven storytelling component with pinned image that grows, overlays, and reveals focus areas",
+    "category": "common",
+    "icon": "visibility",
+    "keywords": ["scroll", "pin", "focus", "areas"],
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "../block.php"
+    },
+    "supports": {
+        "anchor": true,
+        "className": true,
+        "align": ["full"],
+        "color": {
+            "text": false
+        }
+    },
+    "attributes": {
+        "backgroundColor": {
+            "type": "string",
+            "default": "black"
+        }
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": {
+                "preview_image": "/dist/images/previews/scrolled-pin-focus-areas.jpg"
+            }
+        }
+    }
+}

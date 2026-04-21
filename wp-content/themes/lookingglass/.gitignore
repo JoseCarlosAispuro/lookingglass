@@ -1,0 +1,18 @@
+vendor/
+node_modules/
+dist/
+
+# Generated files
+theme.json
+theme.json.generated
+tailwind.config.js
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db

@@ -1,0 +1,29 @@
+{
+    "name": "acf/tertiary-hero",
+    "title": "Tertiary Hero",
+    "description": "Hero component for tertiary-level pages with split or concatenated heading variants, featured image, and optional supporting copy.",
+    "category": "formatting",
+    "icon": "cover-image",
+    "keywords": ["hero", "heading", "image", "tertiary"],
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "../block.php"
+    },
+    "supports": {
+        "align": false,
+        "anchor": true,
+        "customClassName": true,
+        "jsx": false,
+        "color": {
+            "text": false
+        }
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": {
+                "preview_image": "/dist/images/previews/tertiary-hero.jpg"
+            }
+        }
+    }
+}

@@ -1,0 +1,37 @@
+/* Timed Steps Media Component */
+
+/* Inactive step: 40% opacity on entire row */
+.timed-step {
+    opacity: 0.4;
+    transition: opacity 0.3s ease-out;
+}
+
+.timed-step.is-active {
+    opacity: 1;
+}
+
+/* Step description expand/collapse */
+.timed-step__description {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition:
+        max-height 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.timed-step.is-active .timed-step__description {
+    opacity: 1;
+}
+
+/* Step number badge — always filled */
+.timed-step__number {
+    background-color: white;
+    color: black;
+    border: 1px solid white;
+}
+
+/* Progress bar transition */
+[data-step-progress] {
+    transition: none;
+}

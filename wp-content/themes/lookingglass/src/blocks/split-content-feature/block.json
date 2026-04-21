@@ -1,0 +1,35 @@
+{
+    "name": "acf/split-content-feature",
+    "apiVersion": 3,
+    "title": "Split Content Feature",
+    "description": "Two-image split content section with animated heading, body copy, and asymmetric portrait images.",
+    "category": "layout",
+    "icon": "format-gallery",
+    "keywords": ["split", "content", "feature", "images"],
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "../block.php"
+    },
+    "supports": {
+        "anchor": true,
+        "className": true,
+        "align": ["full"],
+        "color": {
+            "text": false
+        }
+    },
+    "attributes": {
+        "backgroundColor": {
+            "type": "string",
+            "default": "white"
+        }
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": {
+                "preview_image": "/dist/images/previews/split-content-feature.jpg"
+            }
+        }
+    }
+}

@@ -1,0 +1,7 @@
+[data-icon-cta] [data-cta-tooltip] {
+    @apply pointer-events-none absolute right-[calc(100%+8px)] left-auto md:right-auto md:left-[calc(100%+8px)] top-1/2 -translate-y-1/2 -translate-x-1 ml-2 whitespace-nowrap rounded bg-neutral-900 px-3 py-1 text-sm text-white opacity-0 scale-95 transition-all duration-200;
+}
+
+[data-icon-cta] [data-cta-tooltip].active {
+    @apply opacity-100 scale-100 translate-x-0;
+}

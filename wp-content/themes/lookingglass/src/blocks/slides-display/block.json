@@ -1,0 +1,35 @@
+{
+    "name": "acf/slides-display",
+    "apiVersion": 3,
+    "title": "Slides Display",
+    "description": "Timed slide-based component with steps on the left and an image on the right.",
+    "category": "layout",
+    "icon": "slides",
+    "keywords": ["slides", "steps", "timed", "display"],
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "../block.php"
+    },
+    "supports": {
+        "anchor": true,
+        "className": true,
+        "align": ["full"],
+        "color": {
+            "text": false
+        }
+    },
+    "attributes": {
+        "backgroundColor": {
+            "type": "string",
+            "default": "black"
+        }
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": {
+                "preview_image": "/dist/images/previews/slides-display.jpg"
+            }
+        }
+    }
+}

@@ -1,0 +1,33 @@
+{
+    "name": "acf/text-marquee",
+    "title": "Text Marquee",
+    "description": "A block for displaying scrolling (infinite) marquee text.",
+    "category": "text",
+    "icon": "embed-generic",
+    "keywords": ["marquee", "text"],
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "../block.php"
+    },
+    "supports": {
+        "anchor": true,
+        "className": true,
+        "color": {
+            "text": false
+        }
+    },
+    "attributes": {
+        "backgroundColor": {
+            "type": "string",
+            "default": "black"
+        }
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": {
+                "preview_image": "/dist/images/previews/text-marquee.jpg"
+            }
+        }
+    }
+}

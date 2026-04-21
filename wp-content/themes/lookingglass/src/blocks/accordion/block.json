@@ -1,0 +1,29 @@
+{
+    "name": "acf/accordion",
+    "apiVersion": 3,
+    "title": "Accordion Block",
+    "description": "Full-width accordion section with customizable headline, background color, and accordion list",
+    "category": "layout",
+    "icon": "menu",
+    "keywords": ["accordion", "list"],
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "../block.php"
+    },
+    "supports": {
+        "anchor": true,
+        "className": true,
+        "align": ["full"],
+        "color": {
+            "text": false
+        }
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": {
+                "preview_image": "/dist/images/previews/accordion-block.png"
+            }
+        }
+    }
+}

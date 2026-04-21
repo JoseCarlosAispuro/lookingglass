@@ -1,0 +1,35 @@
+{
+    "name": "acf/sticky-media-editorial",
+    "apiVersion": 3,
+    "title": "Sticky Media Editorial",
+    "description": "Editorial content with a sticky image that follows the user's scroll.",
+    "category": "text",
+    "icon": "align-pull-right",
+    "keywords": ["editorial", "sticky", "media", "image"],
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "../block.php"
+    },
+    "supports": {
+        "anchor": true,
+        "className": true,
+        "align": ["full"],
+        "color": {
+            "text": false
+        }
+    },
+    "attributes": {
+        "backgroundColor": {
+            "type": "string",
+            "default": "white"
+        }
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": {
+                "preview_image": "/dist/images/previews/sticky-media-editorial.jpg"
+            }
+        }
+    }
+}

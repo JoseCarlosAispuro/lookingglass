@@ -1,0 +1,29 @@
+{
+    "name": "acf/plays-grid",
+    "apiVersion": 3,
+    "title": "Plays Grid Block",
+    "description": "Full-width plays grid section with customizable headline, background color, and grid filtering",
+    "category": "layout",
+    "icon": "image-rotate",
+    "keywords": ["plays", "grid"],
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "../block.php"
+    },
+    "supports": {
+        "anchor": true,
+        "className": true,
+        "align": ["full"],
+        "color": {
+            "text": false
+        }
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": {
+                "preview_image": "/dist/images/previews/plays-grid.png"
+            }
+        }
+    }
+}

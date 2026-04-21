@@ -1,0 +1,37 @@
+{
+    "name": "acf/plays-carousel",
+    "apiVersion": 3,
+    "title": "Plays Carousel Block",
+    "description": "Full carousel section with customizable headline, background image, and call-to-action button.",
+    "category": "layout",
+    "icon": "controls-play",
+    "keywords": ["carousel", "plays"],
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "../block.php"
+    },
+    "supports": {
+        "customClassName": true,
+        "anchor": true,
+        "className": true,
+        "align": ["full"],
+        "color": {
+            "background": true,
+            "text": false
+        }
+    },
+    "attributes": {
+        "backgroundColor": {
+            "type": "string",
+            "default": "white"
+        }
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": {
+                "preview_image": "/dist/images/previews/plays-carousel.png"
+            }
+        }
+    }
+}

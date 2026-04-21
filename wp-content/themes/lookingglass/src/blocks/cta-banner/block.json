@@ -1,0 +1,37 @@
+{
+    "name": "acf/cta-banner",
+    "apiVersion": 3,
+    "title": "CTA Banner",
+    "description": "A prominent call-to-action banner for engaging users.",
+    "category": "layout",
+    "icon": "megaphone",
+    "keywords": ["cta", "banner", "promotional", "promo", "event"],
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "../block.php"
+    },
+    "supports": {
+        "anchor": true,
+        "className": true,
+        "align": ["full"],
+        "color": {
+            "link": false,
+            "gradients": false,
+            "text": false
+        }
+    },
+    "attributes": {
+        "backgroundColor": {
+            "type": "string",
+            "default": "black"
+        }
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": {
+                "preview_image": "/dist/images/previews/cta-banner.jpg"
+            }
+        }
+    }
+}

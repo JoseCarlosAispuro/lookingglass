@@ -1,0 +1,37 @@
+{
+    "name": "acf/two-columns",
+    "title": "Two Columns Block",
+    "description": "A two column block to demonstrate the new flat file structure",
+    "category": "common",
+    "icon": "columns",
+    "keywords": ["two", "columns"],
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "../block.php"
+    },
+    "supports": {
+        "anchor": true,
+        "className": true,
+        "color": {
+            "text": true
+        }
+    },
+    "attributes": {
+        "backgroundColor": {
+            "type": "string",
+            "default": "black"
+        },
+        "textColor": {
+            "type": "string",
+            "default": "white"
+        }
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": {
+                "preview_image": "/dist/images/previews/two-columns-block.png"
+            }
+        }
+    }
+}

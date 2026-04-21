@@ -1,0 +1,26 @@
+{
+    "name": "acf/button-block",
+    "title": "CTA Button",
+    "description": "A customizable call-to-action button with link and style options.",
+    "category": "formatting",
+    "icon": "button",
+    "keywords": ["cta", "button"],
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "../block.php"
+    },
+    "supports": {
+        "align": false,
+        "anchor": true,
+        "customClassName": true,
+        "jsx": false
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": {
+                "preview_image": "/dist/images/previews/cta-button.jpg"
+            }
+        }
+    }
+}

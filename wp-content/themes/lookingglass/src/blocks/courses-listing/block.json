@@ -1,0 +1,29 @@
+{
+    "name": "acf/courses-listing",
+    "apiVersion": 3,
+    "title": "Courses Listing",
+    "description": "Courses listing section with sticky media cards, metadata, and CTAs",
+    "category": "layout",
+    "icon": "welcome-learn-more",
+    "keywords": ["courses", "classes", "education", "camps"],
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "../block.php"
+    },
+    "supports": {
+        "anchor": true,
+        "className": true,
+        "align": ["full"],
+        "color": {
+            "text": false
+        }
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": {
+                "preview_image": "/dist/images/previews/courses-listing.jpg"
+            }
+        }
+    }
+}

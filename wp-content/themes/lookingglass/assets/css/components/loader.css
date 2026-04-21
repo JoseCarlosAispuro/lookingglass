@@ -1,0 +1,8 @@
+@keyframes loader-pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.03); }
+}
+
+.animate-loader-pulse {
+    animation: loader-pulse 2s ease-in-out infinite;
+}

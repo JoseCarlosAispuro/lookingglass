@@ -1,0 +1,37 @@
+{
+    "name": "acf/contact-form",
+    "apiVersion": 3,
+    "title": "Contact Form",
+    "description": "A two-column contact form with heading, description, and decorative image.",
+    "category": "layout",
+    "icon": "email",
+    "keywords": ["contact", "form", "email", "collaboration"],
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "../block.php"
+    },
+    "supports": {
+        "anchor": true,
+        "className": true,
+        "align": ["full"],
+        "color": {
+            "link": false,
+            "gradients": false,
+            "text": false
+        }
+    },
+    "attributes": {
+        "backgroundColor": {
+            "type": "string",
+            "default": "black"
+        }
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": {
+                "preview_image": "/dist/images/previews/contact-form.jpg"
+            }
+        }
+    }
+}

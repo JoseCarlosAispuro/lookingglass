@@ -1,0 +1,142 @@
+{
+    "key": "group_69a8f2b4c5d6e",
+    "title": "Block - Tertiary Hero",
+    "fields": [
+        {
+            "key": "field_69a8f2b4d1001",
+            "label": "Heading (Primary)",
+            "name": "heading_primary",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Main heading text. Displayed prominently at the top of the hero.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_69a8f2b4d1002",
+            "label": "Heading (Secondary)",
+            "name": "heading_secondary",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Secondary heading text. In split mode, displayed as a separate block. In concatenated mode, flows inline with primary.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_69a8f2b4d1003",
+            "label": "Heading Layout",
+            "name": "heading_layout",
+            "aria-label": "",
+            "type": "radio",
+            "instructions": "\"Split\" renders headings as separate visual blocks. \"Concatenated\" flows them as a single line system. \"Words Split\" renders headings as separate words with equal space between words.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "split": "Split",
+                "word_split": "Words Split",
+                "concatenated": "Concatenated"
+            },
+            "default_value": "split",
+            "return_format": "value",
+            "allow_null": 0,
+            "other_choice": 0,
+            "allow_in_bindings": 0,
+            "layout": "horizontal",
+            "save_other_choice": 0
+        },
+        {
+            "key": "field_69a8f2b4d1004",
+            "label": "Hero Image",
+            "name": "hero_image",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "Featured image displayed below the heading. Optimized for large-format hero usage.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "allow_in_bindings": 0,
+            "preview_size": "full"
+        },
+        {
+            "key": "field_69a8f2b4d1005",
+            "label": "Supporting Copy",
+            "name": "supporting_copy",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Optional caption text overlaid on the bottom-right of the image.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf\/tertiary-hero"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "display_title": "",
+    "modified": 1772144238
+}

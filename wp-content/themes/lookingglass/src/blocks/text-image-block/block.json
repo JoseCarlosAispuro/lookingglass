@@ -1,0 +1,34 @@
+{
+    "name": "acf/text-image-block",
+    "title": "Text Image CTA Block",
+    "description": "Promotional CTA block with label + image and heading/body/button.",
+    "category": "layout",
+    "icon": "megaphone",
+    "keywords": ["cta", "support", "image", "text"],
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "../block.php"
+    },
+    "supports": {
+        "anchor": true,
+        "className": true,
+        "align": ["wide", "full"],
+        "color": {
+            "text": false
+        }
+    },
+    "attributes": {
+        "backgroundColor": {
+            "type": "string",
+            "default": "white"
+        }
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": {
+                "preview_image": "/dist/images/previews/text-image-block.jpg"
+            }
+        }
+    }
+}

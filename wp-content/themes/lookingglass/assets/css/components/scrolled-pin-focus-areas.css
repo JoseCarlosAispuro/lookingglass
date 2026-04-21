@@ -1,0 +1,76 @@
+/* Scrolled Pin Focus Areas */
+
+.scrolled-pin__sticky {
+    position: relative;
+}
+
+.scrolled-pin__image-area {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+}
+
+.scrolled-pin__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+}
+
+.scrolled-pin__overlay {
+    position: absolute;
+    inset: 0;
+    background: black;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.scrolled-pin__content {
+    display: none;
+}
+
+/* Desktop: scroll-pinned layout */
+@media (min-width: 1024px) {
+    [data-scrolled-pin] {
+        height: var(--scroll-height);
+    }
+
+    .scrolled-pin__sticky {
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .scrolled-pin__image-area {
+        aspect-ratio: auto;
+        /* width/height set by JS */
+    }
+
+    .scrolled-pin__img {
+        position: absolute;
+        inset: 0;
+    }
+
+    .scrolled-pin__overlay {
+        z-index: 1;
+    }
+
+    .scrolled-pin__content {
+        display: flex;
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        transform: translateY(100%);
+        flex-direction: column;
+        justify-content: flex-end;
+    }
+
+    /* Hide mobile focus areas on desktop */
+    .scrolled-pin .md\:hidden {
+        display: none;
+    }
+}

@@ -1,0 +1,30 @@
+/* Media Gallery — Fancybox overrides */
+.f-toolbar__pagination {
+    display: flex;
+    align-items: center;
+    color: var(--f-button-color, currentColor);
+}
+
+.fancybox__container {
+    --fancybox-backdrop-bg: rgba(0, 0, 0, 0.8);
+    --f-button-bg: transparent;
+    --f-arrow-bg: transparent;
+    --f-progressbar-color: var(--color-orange);
+    --f-toolbar-color: var(--color-white);
+    --f-toolbar-font: var(--font-saans);
+    --f-toolbar-font-weight: 700;
+    --f-toolbar-font-size: 24px;
+}
+
+.fancybox__backdrop {
+    backdrop-filter: blur(40px);
+}
+
+/* Play icon on video thumbnails */
+[data-media-gallery] [data-media-type="video"] .absolute {
+    transition: opacity 0.2s ease;
+}
+
+[data-media-gallery] [data-media-type="video"]:hover .absolute {
+    opacity: 0.8;
+}

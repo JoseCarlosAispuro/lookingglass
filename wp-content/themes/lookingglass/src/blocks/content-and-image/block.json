@@ -1,0 +1,39 @@
+{
+    "name": "acf/content-and-image",
+    "apiVersion": 3,
+    "title": "Content + Image",
+    "description": "",
+    "category": "layout",
+    "icon": "align-right",
+    "keywords": ["image", "text", "content"],
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "../block.php"
+    },
+    "supports": {
+        "anchor": true,
+        "className": true,
+        "align": ["full"],
+        "color": {
+            "text": true
+        }
+    },
+    "attributes": {
+        "backgroundColor": {
+            "type": "string",
+            "default": "white"
+        },
+        "textColor": {
+            "type": "string",
+            "default": "black"
+        }
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": {
+                "preview_image": "/dist/images/previews/content-and-image.jpg"
+            }
+        }
+    }
+}

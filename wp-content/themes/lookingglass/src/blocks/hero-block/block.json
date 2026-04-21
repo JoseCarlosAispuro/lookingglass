@@ -1,0 +1,29 @@
+{
+    "name": "acf/hero-block",
+    "apiVersion": 3,
+    "title": "Hero Block",
+    "description": "Full-width hero section with customizable headline, background image, and call-to-action button.",
+    "category": "layout",
+    "icon": "heading",
+    "keywords": ["sample", "demo", "test"],
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "../block.php"
+    },
+    "supports": {
+        "anchor": true,
+        "className": true,
+        "align": ["full"],
+        "color": {
+            "text": false
+        }
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": {
+                "preview_image": "/dist/images/previews/hero-block.jpg"
+            }
+        }
+    }
+}

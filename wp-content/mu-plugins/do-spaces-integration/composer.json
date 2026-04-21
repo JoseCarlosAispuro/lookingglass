@@ -1,0 +1,21 @@
+{
+    "name": "custom/do-spaces-integration",
+    "description": "Digital Ocean Spaces integration for WordPress media uploads",
+    "type": "wordpress-plugin",
+    "license": "GPL-2.0-or-later",
+    "require": {
+        "php": ">=7.4",
+        "aws/aws-sdk-php": "^3.300"
+    },
+    "autoload": {
+        "psr-4": {
+            "DOSpaces\\Integration\\": "src/"
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "platform": {
+            "php": "7.4"
+        }
+    }
+}

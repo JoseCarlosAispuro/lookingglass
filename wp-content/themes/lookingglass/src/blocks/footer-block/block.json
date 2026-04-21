@@ -1,0 +1,25 @@
+{
+    "name": "acf/footer-block",
+    "title": "Lookingglass Footer",
+    "description": "Custom footer with dynamic menus, logo, and contact info.",
+    "category": "layout",
+    "icon": "menu",
+    "keywords": ["sample", "demo", "test"],
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "../block.php"
+    },
+    "supports": {
+        "anchor": true,
+        "className": true,
+        "align": ["full"]
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": {
+                "preview_image": "/dist/images/previews/footer.jpg"
+            }
+        }
+    }
+}

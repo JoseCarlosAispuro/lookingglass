@@ -1,0 +1,79 @@
+name: Deploy to WP Engine
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: ${{ github.ref_name == 'main' && 'staging' || 'develop' }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.11.1
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+          cache-dependency-path: 'wp-content/themes/lookingglass/pnpm-lock.yaml'
+
+      - name: Install theme dependencies and build
+        run: |
+          cd wp-content/themes/lookingglass
+          pnpm install --frozen-lockfile
+          NODE_ENV=production pnpm build
+
+      - name: Deploy UI-Blocks theme to WP Engine
+        uses: wpengine/github-action-wpe-site-deploy@v3
+        with:
+          WPE_SSHG_KEY_PRIVATE: ${{ secrets.WPE_SSHG_KEY_PRIVATE }}
+          WPE_ENV: ${{ vars.WPE_ENV }}
+          SRC_PATH: "wp-content/themes/lookingglass/"
+          REMOTE_PATH: "wp-content/themes/lookingglass/"
+          FLAGS: -azvr --inplace  --exclude=".*"
+          PHP_LINT: FALSE
+          CACHE_CLEAR: TRUE
+
+      - name: Deploy mu-plugins folder to WP Engine
+        uses: wpengine/github-action-wpe-site-deploy@v3
+        with:
+          WPE_SSHG_KEY_PRIVATE: ${{ secrets.WPE_SSHG_KEY_PRIVATE }}
+          WPE_ENV: ${{ vars.WPE_ENV }}
+          SRC_PATH: "wp-content/mu-plugins/"
+          REMOTE_PATH: "wp-content/mu-plugins/"
+          FLAGS: -azvr --inplace  --exclude=".*"
+          PHP_LINT: FALSE
+          CACHE_CLEAR: TRUE
+      #
+      #      - name: Deploy plugins folder to WP Engine
+      #        uses: wpengine/github-action-wpe-site-deploy@v3
+      #        with:
+      #          # Deploy vars
+      #          WPE_SSHG_KEY_PRIVATE: ${{ secrets.WPE_SSHG_KEY_PRIVATE }}
+      #          WPE_ENV: justwomensport
+      #          # Deploy Options
+      #          SRC_PATH: "wp-content/plugins/"
+      #          REMOTE_PATH: "wp-content/plugins/"
+      #          PHP_LINT: FALSE
+      #          FLAGS: -azvr --inplace  --exclude=".*"  --exclude=wp-content/mu-plugins/local-plugin
+      #          CACHE_CLEAR: TRUE
+
+      - name: Deployment notification
+        if: success()
+        run: |
+          echo "🚀 WP Engine deployment successful!"
+          echo "Environment: ${{ github.ref_name == 'main' && 'production' || 'develop' }}"
+          echo "WP Engine Site: ${{ vars.WPE_ENV }}"
+          echo "Branch: ${{ github.ref_name }}"
+          echo "Commit: ${{ github.sha }}"
+          echo "✅ UI-blocks theme deployed"

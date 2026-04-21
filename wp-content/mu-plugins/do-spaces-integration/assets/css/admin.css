@@ -1,0 +1,107 @@
+/* Digital Ocean Spaces Integration - Admin Styles */
+
+.connection-status {
+    display: inline-block;
+    margin-left: 10px;
+    font-weight: 600;
+}
+
+.connection-status.testing {
+    color: #646970;
+}
+
+.connection-status.success {
+    color: #008a00;
+}
+
+.connection-status.error {
+    color: #d63638;
+}
+
+.connection-status .spinner {
+    float: none;
+    margin: 0 5px 0 0;
+    vertical-align: middle;
+}
+
+/* Status indicators */
+.do-spaces-status-box {
+    background: #fff;
+    border: 1px solid #c3c4c7;
+    border-left: 4px solid #2271b1;
+    padding: 15px 20px;
+    margin-top: 20px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+}
+
+.do-spaces-status-box h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+.do-spaces-status-box ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.do-spaces-status-box li {
+    padding: 5px 0;
+    border-bottom: 1px solid #f0f0f1;
+}
+
+.do-spaces-status-box li:last-child {
+    border-bottom: none;
+}
+
+.status-enabled,
+.status-configured {
+    color: #008a00;
+    font-weight: 600;
+}
+
+.status-disabled,
+.status-incomplete {
+    color: #d63638;
+    font-weight: 600;
+}
+
+/* Required field indicator */
+.required {
+    color: #d63638;
+    font-weight: 600;
+}
+
+/* Section headers in form */
+.form-table th h2 {
+    margin: 20px 0 10px 0;
+    padding-top: 20px;
+    border-top: 1px solid #dcdcde;
+    font-size: 16px;
+}
+
+.form-table tr:first-child th h2 {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+}
+
+/* Test connection button */
+#test-connection-btn {
+    position: relative;
+}
+
+#test-connection-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 782px) {
+    .connection-status {
+        display: block;
+        margin-left: 0;
+        margin-top: 10px;
+    }
+}

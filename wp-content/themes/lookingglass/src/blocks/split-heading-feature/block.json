@@ -1,0 +1,39 @@
+{
+    "name": "acf/split-heading-feature",
+    "apiVersion": 3,
+    "title": "Split Heading Feature",
+    "description": "Feature panel with split heading, body copy, bullet list, CTA, and image",
+    "category": "layout",
+    "icon": "columns",
+    "keywords": ["split", "heading", "feature", "image"],
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "../block.php"
+    },
+    "supports": {
+        "anchor": true,
+        "className": true,
+        "align": ["full"],
+        "color": {
+            "text": true
+        }
+    },
+    "attributes": {
+        "backgroundColor": {
+            "type": "string",
+            "default": "black"
+        },
+        "textColor": {
+            "type": "string",
+            "default": "white"
+        }
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": {
+                "preview_image": "/dist/images/previews/split-heading-feature.jpg"
+            }
+        }
+    }
+}

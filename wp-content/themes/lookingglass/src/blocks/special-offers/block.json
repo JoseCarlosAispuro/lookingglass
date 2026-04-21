@@ -1,0 +1,35 @@
+{
+    "name": "acf/special-offers",
+    "apiVersion": 3,
+    "title": "Special Offers",
+    "description": "A prominent call-to-action banner for engaging users.",
+    "category": "layout",
+    "icon": "money-alt",
+    "keywords": ["special", "offer", "discount"],
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "../block.php"
+    },
+    "supports": {
+        "anchor": true,
+        "className": true,
+        "align": ["full"],
+        "color": {
+            "text": false
+        }
+    },
+    "attributes": {
+        "backgroundColor": {
+            "type": "string",
+            "default": "black"
+        }
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": {
+                "preview_image": "/dist/images/previews/special-offers.jpg"
+            }
+        }
+    }
+}

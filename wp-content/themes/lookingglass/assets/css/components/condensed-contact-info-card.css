@@ -1,0 +1,4 @@
+/* Condensed Contact Info Card — tooltip positioning override for stacked rows */
+.condensed-contact-info-card [data-icon-cta] [data-cta-tooltip] {
+    @apply right-auto left-full mr-0 ml-2;
+}

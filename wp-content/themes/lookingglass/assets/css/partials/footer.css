@@ -1,0 +1,21 @@
+/* Footer Styles */
+
+/* Accordion transition */
+.footer .accordion-content {
+    transition: max-height 0.3s ease-out;
+}
+
+/* Accordion icon rotation when open */
+.footer [data-accordion-trigger][aria-expanded="true"] .accordion-icon {
+    transform: rotate(0deg);
+}
+
+/* Footer nav group styling */
+.footer .footer-nav-group h3 {
+    @apply whitespace-nowrap;
+}
+
+/* Footer links */
+.footer a {
+    @apply block;
+}

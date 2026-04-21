@@ -1,0 +1,37 @@
+{
+    "name": "acf/special-events-carousel",
+    "apiVersion": 3,
+    "title": "Special Events Carousel Block",
+    "description": "Full carousel section with customizable headline, support text and events",
+    "category": "layout",
+    "icon": "star-filled",
+    "keywords": ["special", "carousel", "events"],
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "../block.php"
+    },
+    "supports": {
+        "customClassName": true,
+        "anchor": true,
+        "className": true,
+        "align": ["full"],
+        "color": {
+            "background": true,
+            "text": false
+        }
+    },
+    "attributes": {
+        "backgroundColor": {
+            "type": "string",
+            "default": "white"
+        }
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": {
+                "preview_image": "/dist/images/previews/special-events-carousel.png"
+            }
+        }
+    }
+}

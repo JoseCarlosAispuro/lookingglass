@@ -1,0 +1,35 @@
+{
+    "name": "acf/cta-standalone",
+    "apiVersion": 3,
+    "title": "CTA (Standalone)",
+    "description": "Display one or two standalone call-to-action buttons, ideal for prominent actions like signups, downloads, or links to key pages.",
+    "category": "text",
+    "icon": "button",
+    "keywords": ["button", "cta"],
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "../block.php"
+    },
+    "supports": {
+        "anchor": true,
+        "className": true,
+        "align": ["full"],
+        "color": {
+            "text": false
+        }
+    },
+    "attributes": {
+        "backgroundColor": {
+            "type": "string",
+            "default": "black"
+        }
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": {
+                "preview_image": "/dist/images/previews/cta-standalone.jpg"
+            }
+        }
+    }
+}

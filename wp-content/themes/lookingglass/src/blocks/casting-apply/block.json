@@ -1,0 +1,35 @@
+{
+    "name": "acf/casting-apply",
+    "title": "Casting / Apply Info",
+    "description": "Editorial informational block for Casting / Join the Team pages with headings, feature image, how-to-apply section, copy-to-clipboard email, and optional notes.",
+    "category": "formatting",
+    "icon": "email",
+    "keywords": ["casting", "apply", "team", "email", "notes"],
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "../block.php"
+    },
+    "supports": {
+        "align": false,
+        "anchor": true,
+        "customClassName": true,
+        "jsx": false,
+        "color": {
+            "text": false
+        }
+    },
+    "attributes": {
+        "backgroundColor": {
+            "type": "string",
+            "default": "white"
+        }
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": {
+                "preview_image": "/dist/images/previews/casting-apply.jpg"
+            }
+        }
+    }
+}

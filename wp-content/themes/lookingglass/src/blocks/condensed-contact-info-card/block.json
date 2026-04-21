@@ -1,0 +1,34 @@
+{
+    "name": "acf/condensed-contact-info-card",
+    "apiVersion": 3,
+    "title": "Condensed Contact Info Card",
+    "description": "Compact contact info module with scrolling marquee ribbon and contact details (address, phone, email) with icon action buttons.",
+    "category": "layout",
+    "icon": "email-alt",
+    "keywords": [
+        "contact",
+        "info",
+        "card",
+        "marquee",
+        "email",
+        "phone",
+        "address"
+    ],
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "../block.php"
+    },
+    "supports": {
+        "anchor": true,
+        "className": true,
+        "align": ["full"]
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": {
+                "preview_image": "/dist/images/previews/condensed-contact-info-card.jpg"
+            }
+        }
+    }
+}

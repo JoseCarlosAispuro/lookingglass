@@ -1,0 +1,35 @@
+{
+    "name": "acf/secondary-hero-marquee",
+    "title": "Secondary Hero - Marquee",
+    "description": "Secondary pages hero with infinite marquee heading, supporting text, and a hero image (desktop/mobile).",
+    "category": "formatting",
+    "icon": "cover-image",
+    "keywords": ["hero", "marquee", "heading", "image"],
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "../block.php"
+    },
+    "supports": {
+        "align": false,
+        "anchor": true,
+        "customClassName": true,
+        "jsx": false,
+        "color": {
+            "text": false
+        }
+    },
+    "attributes": {
+        "backgroundColor": {
+            "type": "string",
+            "default": "white"
+        }
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": {
+                "preview_image": "/dist/images/previews/secondary-hero-marquee.jpg"
+            }
+        }
+    }
+}

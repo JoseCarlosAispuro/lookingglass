@@ -1,0 +1,29 @@
+{
+    "name": "acf/faqs",
+    "apiVersion": 3,
+    "title": "FAQs Block",
+    "description": "Full-width FAQs section with accordion elements, background color, and special requests",
+    "category": "layout",
+    "icon": "menu",
+    "keywords": ["faqs", "faq", "accordion", "special", "requests"],
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "../block.php"
+    },
+    "supports": {
+        "anchor": true,
+        "className": true,
+        "align": ["full"],
+        "color": {
+            "text": false
+        }
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": {
+                "preview_image": "/dist/images/previews/faqs.png"
+            }
+        }
+    }
+}

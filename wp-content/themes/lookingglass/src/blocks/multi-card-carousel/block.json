@@ -1,0 +1,27 @@
+{
+    "name": "acf/multi-card-carousel",
+    "title": "Multi Cards Carousel Block",
+    "description": "A multi cards carousel block to demonstrate the new flat file structure",
+    "category": "common",
+    "icon": "images-alt2",
+    "keywords": ["multi", "cards", "carousel"],
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "../block.php"
+    },
+    "supports": {
+        "anchor": true,
+        "className": true,
+        "color": {
+            "text": false
+        }
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": {
+                "preview_image": "/dist/images/previews/multi-cards-carousel.png"
+            }
+        }
+    }
+}

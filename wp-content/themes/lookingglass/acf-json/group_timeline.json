@@ -1,0 +1,269 @@
+{
+    "key": "group_timeline",
+    "title": "Block - Timeline",
+    "fields": [
+        {
+            "key": "field_timeline_heading_left",
+            "label": "Heading Left",
+            "name": "heading_left",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Left portion of the heading (e.g. \"TIME\").",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "TIME",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_timeline_heading_right",
+            "label": "Heading Right",
+            "name": "heading_right",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Right portion of the heading (e.g. \"THROUGH THE GLASS\").",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "THROUGH THE GLASS",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_timeline_slides",
+            "label": "Timeline Slides",
+            "name": "timeline_slides",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Add timeline milestones. Each slide has a year, description, and 1-3 images.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "pagination": 0,
+            "min": 1,
+            "max": 0,
+            "collapsed": "field_timeline_slide_year",
+            "button_label": "Add Milestone",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_timeline_slide_year",
+                    "label": "Year",
+                    "name": "year",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "4-digit year for this milestone.",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": 4,
+                    "allow_in_bindings": 0,
+                    "placeholder": "2024",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_timeline_slides"
+                },
+                {
+                    "key": "field_timeline_slide_template",
+                    "label": "Image Template",
+                    "name": "slide_template",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "Choose the image layout for this slide.",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "1_image": "1 Image",
+                        "2_images": "2 Images",
+                        "3_images": "3 Images"
+                    },
+                    "default_value": "1_image",
+                    "return_format": "value",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "allow_in_bindings": 0,
+                    "ui": 0,
+                    "ajax": 0,
+                    "placeholder": "",
+                    "parent_repeater": "field_timeline_slides"
+                },
+                {
+                    "key": "field_timeline_slide_description",
+                    "label": "Description",
+                    "name": "description",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "Description text for this milestone.",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "rows": 3,
+                    "new_lines": "",
+                    "parent_repeater": "field_timeline_slides"
+                },
+                {
+                    "key": "field_timeline_slide_image_1",
+                    "label": "Image 1",
+                    "name": "image_1",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "Primary image (required for all templates).",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "33",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "allow_in_bindings": 0,
+                    "preview_size": "medium",
+                    "parent_repeater": "field_timeline_slides"
+                },
+                {
+                    "key": "field_timeline_slide_image_2",
+                    "label": "Image 2",
+                    "name": "image_2",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "Second image (for 2 or 3 image templates).",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_timeline_slide_template",
+                                "operator": "==",
+                                "value": "2_images"
+                            }
+                        ],
+                        [
+                            {
+                                "field": "field_timeline_slide_template",
+                                "operator": "==",
+                                "value": "3_images"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "33",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "allow_in_bindings": 0,
+                    "preview_size": "medium",
+                    "parent_repeater": "field_timeline_slides"
+                },
+                {
+                    "key": "field_timeline_slide_image_3",
+                    "label": "Image 3",
+                    "name": "image_3",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "Third image (for 3 image template only).",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_timeline_slide_template",
+                                "operator": "==",
+                                "value": "3_images"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "33",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "allow_in_bindings": 0,
+                    "preview_size": "medium",
+                    "parent_repeater": "field_timeline_slides"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf\/timeline"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Fields for the Timeline Reel block.",
+    "show_in_rest": 0,
+    "display_title": "",
+    "modified": 1741564800
+}

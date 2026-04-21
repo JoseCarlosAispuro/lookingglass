@@ -1,0 +1,184 @@
+/**
+ * Animated Link Component
+ *
+ * Two variants:
+ * 1. .animated-link - Link without arrow (underline animation only)
+ * 2. .animated-link-arrow - Link with arrow (underline + arrow movement)
+ *
+ * Usage:
+ * <a href="#" class="animated-link">Link text</a>
+ * <a href="#" class="animated-link-arrow">Link text</a>
+ */
+
+/* Base styles for both variants */
+.animated-link,
+.animated-link-arrow {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25em;
+    text-decoration: none;
+    color: currentColor;
+}
+
+/* Underline element (pseudo-element) */
+.animated-link::after,
+.animated-link-arrow::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 1px;
+    background-color: currentColor;
+    transition: width 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+/* For arrow variant, underline stops before the arrow */
+.animated-link-arrow::after {
+    /* Will be handled by the inner span */
+}
+
+/* Hover & focus-visible: animate underline */
+.animated-link:hover::after,
+.animated-link:focus-visible::after,
+.animated-link-arrow:hover::after,
+.animated-link-arrow:focus-visible::after {
+    width: 100%;
+}
+
+/* Focus visible outline */
+.animated-link:focus-visible,
+.animated-link-arrow:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 4px;
+}
+
+/* ============================================
+   Variant A: Link with arrow
+   ============================================ */
+
+/* Arrow icon */
+.animated-link-arrow svg,
+.animated-link-arrow .animated-link-icon {
+    flex-shrink: 0;
+    width: 0.75em;
+    height: 0.75em;
+    transition: transform 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+/* Arrow hover animation - moves diagonally up-right */
+.animated-link-arrow:hover svg,
+.animated-link-arrow:hover .animated-link-icon,
+.animated-link-arrow:focus-visible svg,
+.animated-link-arrow:focus-visible .animated-link-icon {
+    transform: translate(3px, -3px);
+}
+
+/* Text wrapper for proper underline positioning (arrow variant) */
+.animated-link-arrow .animated-link-text {
+    position: relative;
+}
+
+.animated-link-arrow .animated-link-text::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 1px;
+    background-color: currentColor;
+    transition: width 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.animated-link-arrow:hover .animated-link-text::after,
+.animated-link-arrow:focus-visible .animated-link-text::after {
+    width: 100%;
+}
+
+/* Remove the main ::after when using text wrapper */
+.animated-link-arrow:has(.animated-link-text)::after {
+    display: none;
+}
+
+/* ============================================
+   Variant B: Link without arrow (simple)
+   ============================================ */
+
+/* Already handled by base styles */
+
+/* ============================================
+   Alternative: Underline visible by default,
+   animates on hover (slide effect)
+   ============================================ */
+
+.animated-link-slide,
+.animated-link-arrow-slide {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25em;
+    text-decoration: none;
+    color: currentColor;
+}
+
+.animated-link-slide::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    background-color: currentColor;
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.animated-link-slide:hover::after,
+.animated-link-slide:focus-visible::after {
+    transform: scaleX(1);
+}
+
+/* ============================================
+   Prefers reduced motion
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+    .animated-link::after,
+    .animated-link-arrow::after,
+    .animated-link-arrow .animated-link-text::after,
+    .animated-link-slide::after {
+        transition: none;
+    }
+
+    .animated-link-arrow svg,
+    .animated-link-arrow .animated-link-icon {
+        transition: none;
+    }
+
+    /* Show underline immediately on hover */
+    .animated-link:hover::after,
+    .animated-link:focus-visible::after {
+        width: 100%;
+    }
+}
+
+/* ============================================
+   Size variants
+   ============================================ */
+
+.animated-link-sm,
+.animated-link-arrow-sm {
+    font-size: 14px;
+}
+
+.animated-link-lg,
+.animated-link-arrow-lg {
+    font-size: 20px;
+}
+
+.animated-link-xl,
+.animated-link-arrow-xl {
+    font-size: 24px;
+}

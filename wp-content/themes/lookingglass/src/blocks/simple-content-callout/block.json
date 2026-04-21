@@ -1,0 +1,38 @@
+{
+    "apiVersion": 3,
+    "name": "acf/simple-content-callout",
+    "title": "Simple Content Callout",
+    "description": "Centered content block with large heading, image, body text and primary CTA.",
+    "category": "layout",
+    "icon": "align-center",
+    "keywords": ["content", "image", "cta", "callout"],
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "../block.php"
+    },
+    "supports": {
+        "align": false,
+        "anchor": true,
+        "customClassName": true,
+        "jsx": false,
+        "color": {
+            "link": false,
+            "gradients": false,
+            "text": false
+        }
+    },
+    "attributes": {
+        "backgroundColor": {
+            "type": "string",
+            "default": "white"
+        }
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": {
+                "preview_image": "/dist/images/previews/simple-content-callout.jpg"
+            }
+        }
+    }
+}

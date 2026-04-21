@@ -1,0 +1,35 @@
+{
+    "name": "acf/split-heading-hero",
+    "apiVersion": 3,
+    "title": "Split Heading Hero",
+    "description": "",
+    "category": "layout",
+    "icon": "editor-insertmore",
+    "keywords": ["hero"],
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "../block.php"
+    },
+    "supports": {
+        "anchor": true,
+        "className": true,
+        "align": ["full"],
+        "color": {
+            "text": false
+        }
+    },
+    "attributes": {
+        "backgroundColor": {
+            "type": "string",
+            "default": "white"
+        }
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": {
+                "preview_image": "/dist/images/previews/split-heading-hero.jpg"
+            }
+        }
+    }
+}
