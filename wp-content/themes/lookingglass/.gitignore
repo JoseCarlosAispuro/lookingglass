@@ -3,7 +3,6 @@ node_modules/
 dist/
 
 # Generated files
-theme.json
 theme.json.generated
 
 # IDE files
