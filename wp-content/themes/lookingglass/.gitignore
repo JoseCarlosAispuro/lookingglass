@@ -5,7 +5,6 @@ dist/
 # Generated files
 theme.json
 theme.json.generated
-tailwind.config.js
 
 # IDE files
 .vscode/
