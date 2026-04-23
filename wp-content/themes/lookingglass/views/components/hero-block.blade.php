@@ -12,16 +12,14 @@
             <div class="w-full h-full absolute top-0 left-0 overflow-hidden">
                 <span class="w-full h-full absolute top-0 left-0 z-1"></span>
                 <div class="absolute top-0 left-0 w-full h-full">
-                    <video class="hidden md:block object-cover w-full h-full"
+                    <video class="hidden md:block object-cover w-full h-full absolute top-0 left-0"
                            data-hero-video="desktop"
-                           data-src="{{$backgroundVideo['url']}}"
-                           playsinline muted autoplay loop
-                           poster="{{$videoPosterImage['url']}}"></video>
+                           data-src="{{$backgroundVideo['url']}}" muted></video>
                     <video class="block md:hidden object-cover w-full h-full"
                            data-hero-video="mobile"
-                           data-src="{{$backgroundVideoMobile['url']}}"
-                           playsinline muted autoplay loop
-                           poster="{{$videoPosterImageMobile['url']}}"></video>
+                           data-src="{{$backgroundVideoMobile['url']}}" muted></video>
+                    <img data-hero-poster="desktop" class="hidden md:block object-cover w-full h-full absolute top-0 left-0" src="{{$videoPosterImage['url']}}" alt="{{$videoPosterImage['alt']}}">
+                    <img data-hero-poster="mobile" class="block md:hidden object-cover w-full h-full absolute top-0 left-0" src="{{$videoPosterImageMobile['url']}}" alt="{{$videoPosterImageMobile['alt']}}">
                 </div>
             </div>
             <div class="relative z-1 h-full">
