@@ -30,7 +30,6 @@
             <div class="h-full col-span-12 md:col-span-8 col-start-1 md:col-start-5 grid grid-cols-12 mt-sm md:mt-0 overflow-y-auto" data-menus-section>
                 <div class="col-span-12 md:col-span-7 col-start-1 flex flex-col justify-between md:gap-y-20">
                     {!! get_nav_menu_by_location(NAV_MENUS_MAIN, ['menu_class' => 'flex flex-col gap-sm main-links body']) !!}
-                    {!! get_nav_menu_by_location(NAV_MENUS_SUPPORT, ['menu_class' => 'flex flex-col gap-sm main-links body menu-support']) !!}
                 </div>
                 <div class="hidden md:block col-span-5">
                     <div class="flex flex-col gap-xs" data-navigation-modal-subitems></div>
