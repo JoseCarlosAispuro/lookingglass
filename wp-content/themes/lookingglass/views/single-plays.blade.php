@@ -50,13 +50,11 @@
                 @endif
                 @if($resourcesHeading || $resources)
                         <div class="flex flex-col gap-sm md:gap-y-8 border-t border-black-100 mt-12">
-                            @if($resourcesHeading)
-                                <h3 class="headline-6 uppercase font-bold py-3">{{$resourcesHeading}}</h3>
-                            @endif
+                            <h3 class="headline-6 uppercase font-bold py-3">{{$resourcesHeading ?? $resourcesHeading}}</h3>
                             @if($resources)
                                 <div class="flex gap-x-4 gap-y-8 flex-wrap">
                                     @foreach($resources as $resource)
-                                        <div data-rich-text class="w-[calc(50%-8px)]">
+                                        <div data-rich-text class="w-full md:w-[calc(50%-8px)]">
                                             <a class="button-lg reversed-animation" href="{{$resource['resource_link']['url']}}" target="{{$resource['resource_link']['target']}}">{{$resource['resource_link']['title']}}</a>
                                         </div>
                                     @endforeach
