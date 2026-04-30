@@ -6,6 +6,8 @@
     $playHeroCredits = get_field('play_hero_credits');
     $aboutHeading = get_field('about_heading');
     $aboutBody = get_field('about_body');
+    $resourcesHeading = get_field('resources_heading');
+    $resources = get_field('resources_links');
     $infoHeading = get_field('info_heading');
     $infoItems = get_field('info_items') ?: [];
     $locationsHeading = get_field('locations_heading');
@@ -45,6 +47,23 @@
                             <div class="body-lg hb-spacing" data-rich-text data-legal-text>{!! $aboutBody !!}</div>
                         @endif
                     </div>
+                @endif
+                @if($resourcesHeading || $resources)
+                        <div class="flex flex-col gap-sm md:gap-y-8 border-t border-black-100 mt-12">
+                            @if($resourcesHeading)
+                                <h3 class="headline-6 uppercase font-bold py-3">{{$resourcesHeading}}</h3>
+                            @endif
+                            @if($resources)
+                                <div class="flex gap-x-4 gap-y-8 flex-wrap">
+                                    @foreach($resources as $resource)
+                                        <div data-rich-text class="w-[calc(50%-8px)]">
+                                            <a class="button-lg reversed-animation" href="{{$resource['resource_link']['url']}}" target="{{$resource['resource_link']['target']}}">{{$resource['resource_link']['title']}}</a>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            @endif
+
+                        </div>
                 @endif
                 <div class="border-t border-black-100 mt-lg md:mt-xl">
                     @if(isset($infoHeading) && $infoHeading)
