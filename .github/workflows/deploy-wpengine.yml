@@ -10,7 +10,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    environment: ${{ github.ref_name == 'main' && 'production' || (github.ref_name == 'staging' && 'staging' || 'development') }}
+    environment: ${{ github.ref_name == 'main' && 'production' || (github.ref_name == 'staging' && 'staging' || 'develop') }}
 
     steps:
       - name: Checkout code
