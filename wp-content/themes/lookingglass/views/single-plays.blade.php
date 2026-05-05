@@ -91,7 +91,7 @@
                                             </div>
                                             <div>
                                                 <p class="font-semibold">{{$event['label']}}</p>
-                                                <div class="body-lg flex flex-col gap-y-8" data-rich-text>
+                                                <div class="body-lg flex flex-col" data-rich-text>
                                                     {!! $event['value'] !!}
                                                 </div>
                                             </div>
