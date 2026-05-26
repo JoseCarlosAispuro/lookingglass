@@ -5,11 +5,12 @@ on:
     branches:
       - main
       - develop
+      - staging
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    environment: ${{ github.ref_name == 'main' && 'staging' || 'develop' }}
+    environment: ${{ github.ref_name == 'main' && 'production' || (github.ref_name == 'staging' && 'staging' || 'develop') }}
 
     steps:
       - name: Checkout code

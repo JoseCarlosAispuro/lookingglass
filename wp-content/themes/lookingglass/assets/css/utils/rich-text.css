@@ -13,6 +13,11 @@
     @apply animated-underline after:bottom-[3px];
 }
 
+[data-rich-text] a.reversed-animation {
+    /* Animated underline */
+    @apply animated-underline-reversed after:bottom-[3px];
+}
+
 /* Arrow Icon */
 [data-rich-text] a::before {
     font-family: "Material Symbols Outlined";

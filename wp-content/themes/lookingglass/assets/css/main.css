@@ -329,4 +329,8 @@
     @apply relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:bg-(--app-fg-color) after:w-full after:h-px after:z-0 after:transition-transform after:duration-600 after:ease-in-out after:scale-x-100 after:origin-[left_center] hover:after:scale-x-0 hover:after:origin-[right_center];
 }
 
+@utility animated-underline-reversed {
+    @apply relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:bg-(--app-fg-color) after:w-full after:h-px after:z-0 after:transition-transform after:duration-600 after:ease-in-out after:scale-x-0 after:origin-[right_center] hover:after:scale-x-100 hover:after:origin-[left_center];
+}
+
 @source not inline("container");
