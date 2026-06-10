@@ -14,10 +14,10 @@
                 <div class="absolute top-0 left-0 w-full h-full">
                     <video class="hidden md:block object-cover w-full h-full absolute top-0 left-0"
                            data-hero-video="desktop"
-                           data-src="{{$backgroundVideo['url']}}" muted></video>
+                           data-src="{{$backgroundVideo['url']}}" muted playsinline></video>
                     <video class="block md:hidden object-cover w-full h-full"
                            data-hero-video="mobile"
-                           data-src="{{$backgroundVideoMobile['url']}}" muted></video>
+                           data-src="{{$backgroundVideoMobile['url']}}" muted playsinline></video>
                     <img data-hero-poster="desktop" class="hidden md:block object-cover w-full h-full absolute top-0 left-0" src="{{$videoPosterImage['url']}}" alt="{{$videoPosterImage['alt']}}">
                     <img data-hero-poster="mobile" class="block md:hidden object-cover w-full h-full absolute top-0 left-0" src="{{$videoPosterImageMobile['url']}}" alt="{{$videoPosterImageMobile['alt']}}">
                 </div>
