@@ -90,7 +90,7 @@
                                     $linkUrl = $item['link'] ?? null;
                                 @endphp
 
-                                <div class="swiper-slide !w-full md:!w-[18.9%]">
+                                <div class="swiper-slide !w-full md:!w-[18.9%] min-w-[218px]">
                                     @if($linkUrl)
                                         <a href="{{ esc_url($linkUrl) }}" class="block group" data-hide-cursor>
                                             @else
