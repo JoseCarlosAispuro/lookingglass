@@ -293,7 +293,7 @@ class Navigation {
         this.handleScroll()
         this.handleNavigationModal()
         this.handleMenuItems()
-        this.handleMouseOutside()
+
         this.handleClick()
         this.handleResizing()
     }
