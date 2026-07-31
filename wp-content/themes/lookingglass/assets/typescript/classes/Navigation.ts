@@ -246,6 +246,29 @@ class Navigation {
         )
     }
 
+    // After any item opens or closes, walk up the DOM and recalculate the
+    // max-height of every open ancestor so nested content is never clipped.
+    syncAncestorHeights = (fromItem: HTMLElement) => {
+        let ancestor = fromItem.parentElement?.closest<HTMLElement>(
+            '.menu-item-has-children'
+        )
+
+        while (ancestor) {
+            if (ancestor.classList.contains('open')) {
+                const anchor = ancestor.querySelector<HTMLElement>('a')
+                const submenu = ancestor.querySelector<HTMLElement>('.sub-menu')
+                if (anchor && submenu) {
+                    // scrollHeight forces a synchronous reflow so the value
+                    // already reflects the child's newly applied max-height.
+                    ancestor.style.maxHeight = `${anchor.clientHeight + submenu.scrollHeight + 16}px`
+                }
+            }
+            ancestor = ancestor.parentElement?.closest<HTMLElement>(
+                '.menu-item-has-children'
+            )
+        }
+    }
+
     handleClick = () => {
         this.navigationItems.forEach(item => {
             if (item.classList.contains('menu-item-has-children')) {
@@ -263,10 +286,14 @@ class Navigation {
                             `${anchorElement.clientHeight}px`
                         item.classList.remove('open')
                     } else {
+                        // Use scrollHeight (not clientHeight) so we measure
+                        // the submenu's full content, not the clipped portion.
                         ;(item as HTMLElement).style.maxHeight =
-                            `${anchorElement.clientHeight + (submenu?.clientHeight ?? 0) + 16}px`
+                            `${anchorElement.clientHeight + (submenu?.scrollHeight ?? 0) + 16}px`
                         item.classList.add('open')
                     }
+
+                    this.syncAncestorHeights(item as HTMLElement)
                 })
             }
         })
@@ -293,7 +320,7 @@ class Navigation {
         this.handleScroll()
         this.handleNavigationModal()
         this.handleMenuItems()
-        this.handleMouseOutside()
+
         this.handleClick()
         this.handleResizing()
     }

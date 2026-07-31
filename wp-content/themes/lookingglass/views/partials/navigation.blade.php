@@ -32,7 +32,7 @@
                     {!! get_nav_menu_by_location(NAV_MENUS_MAIN, ['menu_class' => 'flex flex-col gap-sm main-links body']) !!}
                 </div>
                 <div class="hidden md:block col-span-5">
-                    <div class="flex flex-col gap-xs" data-navigation-modal-subitems></div>
+                    <div class="flex flex-col gap-xs" data-navigation-modal-subitems>kahsbdjahbsdjhab</div>
                 </div>
             </div>
         </div>
