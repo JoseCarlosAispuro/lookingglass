@@ -1,9 +1,16 @@
-import { animate, cubicBezier } from 'motion'
-
 // Respect the OS-level "reduce motion" preference
 const reducedMotion = window.matchMedia(
     '(prefers-reduced-motion: reduce)'
 ).matches
+
+// Resolves once the longest CSS transition on the element ends,
+// or immediately if reduced motion is preferred.
+function waitForTransition(el: HTMLElement): Promise<void> {
+    if (reducedMotion) return Promise.resolve()
+    return new Promise(resolve => {
+        el.addEventListener('transitionend', () => resolve(), { once: true })
+    })
+}
 
 // ---------------------------------------------------------------------------
 // Storage
@@ -258,81 +265,36 @@ class PromoBanner {
         if (e.key === 'Tab') this.trapFocus(e)
     }
 
+    // Open — setting data-state="open" triggers the CSS transitions.
     private async openModal(): Promise<void> {
         await this.waitForCampaignImage()
         this.markPersistentDismissed()
         this.previouslyFocusedElement = document.activeElement as HTMLElement
+
         this.root.classList.remove('invisible', 'pointer-events-none')
         this.root.setAttribute('aria-hidden', 'false')
         this.root.dataset.state = 'open'
         this.lockScroll()
         document.addEventListener('keydown', this.onKeyDown)
 
-        if (reducedMotion) {
-            this.backdrop.style.opacity = '1'
-            this.modal.style.opacity = '1'
-            this.modal.style.overflowY = 'auto'
-            this.focusFirstElement()
-            return
-        }
-
-        const ease = cubicBezier(0.23, 1, 0.32, 1)
-        await Promise.all([
-            animate(
-                this.backdrop,
-                { opacity: [0, 1] },
-                { duration: 0.35, ease: 'easeOut' }
-            ).finished,
-            animate(
-                this.modal,
-                { opacity: [0, 1], scale: [0.96, 1], y: [12, 0] },
-                { duration: 0.45, ease, delay: 0.08 }
-            ).finished,
-        ])
-        this.modal.style.overflowY = 'auto'
-        this.modal.style.willChange = 'auto'
-        this.backdrop.style.willChange = 'auto'
+        // Wait for the modal card transition before moving focus
+        await waitForTransition(this.modal)
         this.focusFirstElement()
     }
 
+    // Close — "closing" triggers exit transitions; hide once backdrop fades out.
     private async closeModal(): Promise<void> {
         if (!this.isOpen()) return
 
         document.removeEventListener('keydown', this.onKeyDown)
+        this.root.dataset.state = 'closing'
 
-        if (reducedMotion) {
-            this.backdrop.style.opacity = '0'
-            this.modal.style.opacity = '0'
-        } else {
-            // Re-promote to GPU layers for the exit animation
-            this.modal.style.willChange = 'transform, opacity'
-            this.backdrop.style.willChange = 'opacity'
-            // Lock scroll during exit so content doesn't shift mid-animation
-            this.modal.style.overflowY = 'hidden'
+        await waitForTransition(this.backdrop)
 
-            const ease = cubicBezier(0.23, 1, 0.32, 1)
-
-            await Promise.all([
-                animate(
-                    this.modal,
-                    { opacity: [1, 0], scale: [1, 0.96], y: [0, 12] },
-                    { duration: 0.3, ease }
-                ).finished,
-                animate(
-                    this.backdrop,
-                    { opacity: [1, 0] },
-                    { duration: 0.35, ease: 'easeIn' }
-                ).finished,
-            ])
-        }
-
-        // Hide the overlay before restoring page state
         this.root.classList.add('invisible', 'pointer-events-none')
         this.root.setAttribute('aria-hidden', 'true')
         this.root.dataset.state = 'closed'
         this.unlockScroll()
-
-        // Return focus to the element that was active before the modal opened
         this.restoreFocus()
     }
 

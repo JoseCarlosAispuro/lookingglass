@@ -19,20 +19,17 @@
     aria-label="{{ esc_attr($bannerTitle) ?: 'Promotion' }}"
     aria-hidden="true"
 >
-    {{-- Backdrop — will-change promotes to GPU layer before JS runs --}}
+    {{-- Backdrop — initial opacity:0 comes from CSS, not inline style --}}
     <div
         class="absolute inset-0 bg-black/55"
         data-promo-backdrop
         aria-hidden="true"
-        style="opacity: 0; will-change: opacity;"
     ></div>
 
-    {{-- Modal card — will-change promotes to GPU layer before JS runs.
-         overflow is set to hidden during animation, restored to auto after. --}}
+    {{-- Modal card — initial opacity/transform come from CSS, not inline style --}}
     <div
-        class="relative z-[1] bg-white flex flex-col md:gap-0 gap-[18px] w-full max-w-[480px] max-h-[90svh] overflow-hidden shadow-2xl md:flex-row md:max-w-[609px] md:min-h-[380px] md:max-h-[80svh] md:overflow-y-visible rounded-[8px] py-md-[18px] px-4 pt-[45px] pb-4"
+        class="relative z-[1] bg-white flex flex-col md:gap-0 gap-[18px] w-full max-w-[480px] max-h-[90svh] overflow-y-auto shadow-2xl md:flex-row md:max-w-[609px] md:min-h-[380px] md:max-h-[80svh] md:overflow-y-visible rounded-[8px] py-md-[18px] px-4 pt-[45px] pb-4"
         data-promo-modal
-        style="opacity: 0; will-change: transform, opacity;"
     >
         {{-- Close button --}}
         <button
