@@ -1,4 +1,9 @@
-import { animate } from 'motion'
+import { animate, cubicBezier } from 'motion'
+
+// Respect the OS-level "reduce motion" preference
+const reducedMotion = window.matchMedia(
+    '(prefers-reduced-motion: reduce)'
+).matches
 
 // ---------------------------------------------------------------------------
 // Storage
@@ -65,17 +70,9 @@ class PromoBanner {
     private readonly ctaButton: HTMLElement | null
     private readonly campaignImage: HTMLImageElement | null
     private readonly campaignId: string
-
-    // In-memory fallback for when Web Storage is unavailable
     private inMemorySessionFlag = false
-
-    // Holds the active MutationObserver watching for conflict resolution
     private conflictObserver: MutationObserver | null = null
-
-    // The element that held focus before the modal opened, so we can restore it
     private previouslyFocusedElement: HTMLElement | null = null
-
-    // Bound reference so we can remove the listener on close
     private readonly onKeyDown: (e: KeyboardEvent) => void
 
     constructor(root: HTMLElement) {
@@ -92,10 +89,6 @@ class PromoBanner {
         this.campaignId = root.dataset.campaignId ?? 'default'
         this.onKeyDown = this.handleKeyDown.bind(this)
     }
-
-    // -----------------------------------------------------------------------
-    // Storage helpers
-    // -----------------------------------------------------------------------
 
     private isSessionSuppressed(): boolean {
         if (this.inMemorySessionFlag) return true
@@ -117,7 +110,6 @@ class PromoBanner {
             return false
         }
     }
-
     private markSessionSeen(): void {
         if (DEV_FORCE) return
         this.inMemorySessionFlag = true
@@ -139,10 +131,6 @@ class PromoBanner {
             // Storage unavailable — session-level suppression is still active
         }
     }
-
-    // -----------------------------------------------------------------------
-    // Conflict detection
-    // -----------------------------------------------------------------------
 
     private isAnyConflictActive(): boolean {
         return CONFLICT_SELECTORS.some(selector => {
@@ -184,12 +172,6 @@ class PromoBanner {
         this.conflictObserver = null
     }
 
-    // -----------------------------------------------------------------------
-    // Entrance animation detection
-    // Resolves once the page loader hides itself (display: none),
-    // or immediately if no loader is present.
-    // -----------------------------------------------------------------------
-
     private waitForEntranceAnimation(): Promise<void> {
         const loader = document.querySelector<HTMLElement>('[data-loader]')
 
@@ -212,12 +194,6 @@ class PromoBanner {
         })
     }
 
-    // -----------------------------------------------------------------------
-    // Image preloading
-    // Ensures the campaign image is decoded before the modal fades in,
-    // avoiding a visible placeholder-to-image swap.
-    // -----------------------------------------------------------------------
-
     private waitForCampaignImage(): Promise<void> {
         const img = this.campaignImage
         if (!img) return Promise.resolve()
@@ -228,10 +204,6 @@ class PromoBanner {
             img.addEventListener('error', () => resolve(), { once: true })
         })
     }
-
-    // -----------------------------------------------------------------------
-    // Utility
-    // -----------------------------------------------------------------------
 
     private delay(ms: number): Promise<void> {
         return new Promise(resolve => setTimeout(resolve, ms))
@@ -248,10 +220,6 @@ class PromoBanner {
     private unlockScroll(): void {
         document.documentElement.classList.remove('overflow-hidden')
     }
-
-    // -----------------------------------------------------------------------
-    // Focus management
-    // -----------------------------------------------------------------------
 
     private getFocusableElements(): HTMLElement[] {
         return Array.from(
@@ -290,66 +258,73 @@ class PromoBanner {
         if (e.key === 'Tab') this.trapFocus(e)
     }
 
-    // -----------------------------------------------------------------------
-    // Open animation
-    // 1. Reveal root (makes it interactive)
-    // 2. Fade in backdrop
-    // 3. Fade + scale in modal card
-    // -----------------------------------------------------------------------
-
     private async openModal(): Promise<void> {
         await this.waitForCampaignImage()
-
-        // Start the 7-day suppression clock the moment the modal is shown,
-        // regardless of how or whether the visitor dismisses it
         this.markPersistentDismissed()
-
-        // Store the element that currently has focus so we can return to it later
         this.previouslyFocusedElement = document.activeElement as HTMLElement
-
-        // Make the overlay interactive and visible before animating
         this.root.classList.remove('invisible', 'pointer-events-none')
         this.root.setAttribute('aria-hidden', 'false')
         this.root.dataset.state = 'open'
         this.lockScroll()
         document.addEventListener('keydown', this.onKeyDown)
 
-        await animate(
-            this.backdrop,
-            { opacity: [0, 1] },
-            { duration: 0.3, ease: 'easeOut' }
-        ).finished
+        if (reducedMotion) {
+            this.backdrop.style.opacity = '1'
+            this.modal.style.opacity = '1'
+            this.modal.style.overflowY = 'auto'
+            this.focusFirstElement()
+            return
+        }
 
-        await animate(
-            this.modal,
-            { opacity: [0, 1], scale: [0.98, 1] },
-            { duration: 0.35, ease: [0.23, 1, 0.32, 1] }
-        ).finished
-
-        // Move focus into the modal once the card is visible
+        const ease = cubicBezier(0.23, 1, 0.32, 1)
+        await Promise.all([
+            animate(
+                this.backdrop,
+                { opacity: [0, 1] },
+                { duration: 0.35, ease: 'easeOut' }
+            ).finished,
+            animate(
+                this.modal,
+                { opacity: [0, 1], scale: [0.96, 1], y: [12, 0] },
+                { duration: 0.45, ease, delay: 0.08 }
+            ).finished,
+        ])
+        this.modal.style.overflowY = 'auto'
+        this.modal.style.willChange = 'auto'
+        this.backdrop.style.willChange = 'auto'
         this.focusFirstElement()
     }
-
-    // -----------------------------------------------------------------------
-    // Close animation (reverse of open)
-    // -----------------------------------------------------------------------
 
     private async closeModal(): Promise<void> {
         if (!this.isOpen()) return
 
         document.removeEventListener('keydown', this.onKeyDown)
 
-        await animate(
-            this.modal,
-            { opacity: [1, 0], scale: [1, 0.98] },
-            { duration: 0.25, ease: 'easeIn' }
-        ).finished
+        if (reducedMotion) {
+            this.backdrop.style.opacity = '0'
+            this.modal.style.opacity = '0'
+        } else {
+            // Re-promote to GPU layers for the exit animation
+            this.modal.style.willChange = 'transform, opacity'
+            this.backdrop.style.willChange = 'opacity'
+            // Lock scroll during exit so content doesn't shift mid-animation
+            this.modal.style.overflowY = 'hidden'
 
-        await animate(
-            this.backdrop,
-            { opacity: [1, 0] },
-            { duration: 0.2, ease: 'easeIn' }
-        ).finished
+            const ease = cubicBezier(0.23, 1, 0.32, 1)
+
+            await Promise.all([
+                animate(
+                    this.modal,
+                    { opacity: [1, 0], scale: [1, 0.96], y: [0, 12] },
+                    { duration: 0.3, ease }
+                ).finished,
+                animate(
+                    this.backdrop,
+                    { opacity: [1, 0] },
+                    { duration: 0.35, ease: 'easeIn' }
+                ).finished,
+            ])
+        }
 
         // Hide the overlay before restoring page state
         this.root.classList.add('invisible', 'pointer-events-none')
