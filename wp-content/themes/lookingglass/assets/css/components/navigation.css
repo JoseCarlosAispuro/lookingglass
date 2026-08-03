@@ -91,15 +91,17 @@
                     @apply pl-6 relative font-normal;
                 }
 
-                .menu-item a:after {
-                    content: "— ";
+                .menu-item a:after,
+                .menu-item.active a:after {
+                    content: "— " !important;
                     position: absolute;
                     left: 0;
                     display: inline;
                     width: auto;
                     height: auto;
-                    background-color: transparent;
-                    transform: none;
+                    background-color: transparent !important;
+                    transform: none !important;
+                    translate: none !important;
                     transition: none;
                     z-index: auto;
                 }
@@ -134,15 +136,17 @@
                     @apply text-[32px] pl-9 relative font-normal;
                 }
 
-                .menu-item a:after {
-                    content: "— ";
+                .menu-item a:after,
+                .menu-item.active a:after {
+                    content: "— " !important;
                     position: absolute;
                     left: 0;
                     display: inline;
                     width: auto;
                     height: auto;
-                    background-color: transparent;
-                    transform: none;
+                    background-color: transparent !important;
+                    transform: none !important;
+                    translate: none !important;
                     transition: none;
                     z-index: auto;
                 }
