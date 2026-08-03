@@ -1,0 +1,48 @@
+/* Promo Banner
+   Initial state lives here in CSS (not inline) so that the data-state
+   rules can override it — inline styles beat stylesheet rules in specificity. */
+
+/* Default / closed — hidden */
+[data-promo-backdrop] {
+    opacity: 0;
+    transition: opacity 0.35s ease-out;
+}
+
+[data-promo-modal] {
+    opacity: 0;
+    transform: scale(0.96) translateY(12px);
+    transition:
+        opacity 0.45s cubic-bezier(0.23, 1, 0.32, 1) 0.08s,
+        transform 0.45s cubic-bezier(0.23, 1, 0.32, 1) 0.08s;
+}
+
+/* Open — animate in */
+[data-promo-banner][data-state="open"] [data-promo-backdrop] {
+    opacity: 1;
+}
+
+[data-promo-banner][data-state="open"] [data-promo-modal] {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+}
+
+/* Closing — faster exit, no delay */
+[data-promo-banner][data-state="closing"] [data-promo-backdrop] {
+    opacity: 0;
+    transition: opacity 0.35s ease-in;
+}
+
+[data-promo-banner][data-state="closing"] [data-promo-modal] {
+    opacity: 0;
+    transform: scale(0.96) translateY(12px);
+    transition:
+        opacity 0.3s cubic-bezier(0.23, 1, 0.32, 1),
+        transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    [data-promo-backdrop],
+    [data-promo-modal] {
+        transition: none;
+    }
+}
