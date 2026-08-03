@@ -40,9 +40,13 @@ class Navigation {
         this.navigationItems =
             this.navigationModal?.querySelectorAll('.menu-item') ??
             document.querySelectorAll('.menu-item')
+        // Only top-level anchors — sub-menu anchors must not be animated
+        // or motion will persist y/opacity state on them, breaking their
+        // behaviour once they become visible inside the mobile accordion.
         this.navigationItemsAnchors =
-            this.navigationModal?.querySelectorAll('.menu-item a') ??
-            document.querySelectorAll('.menu-item a')
+            this.navigationModal?.querySelectorAll(
+                '#menu-main-navigation > .menu-item > a, .menu-support > .menu-item > a'
+            ) ?? document.querySelectorAll('.menu-item a')
         this.navigationGalleryElement = this.navigationModal?.querySelector(
             '[data-navigation-gallery-element]'
         ) as HTMLImageElement | null
@@ -114,6 +118,7 @@ class Navigation {
 
     closeModal = () => {
         this.hideGalleryImages()
+        this.resetAccordions()
         this.navigationModal?.classList.remove('translate-y-0')
         this.navigationModal?.classList.add('-translate-y-full')
         animate(
@@ -124,6 +129,22 @@ class Navigation {
                 duration: 1,
             }
         )
+    }
+
+    resetAccordions = () => {
+        const topLevelItems =
+            this.navigationModal?.querySelectorAll<HTMLElement>(
+                '#menu-main-navigation > .menu-item-has-children, .menu-support > .menu-item-has-children'
+            ) ?? []
+
+        topLevelItems.forEach(item => {
+            if (!item.classList.contains('open')) return
+            const anchor = item.querySelector<HTMLElement>(':scope > a')
+            item.classList.remove('open')
+            if (anchor) {
+                item.style.maxHeight = `${anchor.clientHeight}px`
+            }
+        })
     }
 
     handleHideShow = () => {
@@ -198,9 +219,19 @@ class Navigation {
 
     handleMenuItems = () => {
         this.navigationItems.forEach((item, _index) => {
+            // Plus/minus icon only on direct top-level items
             if (item.classList.contains('menu-item-has-children')) {
-                this.createPlusMinusIcon(item)
+                const isTopLevel = !item.closest('.sub-menu')
+                if (isTopLevel) this.createPlusMinusIcon(item)
             }
+
+            // 4th level items (inside a nested sub-menu under a
+            // menu-item-has-children) must never receive active state —
+            // they are always visually consistent and need no interaction.
+            const isFourthLevel = !!item.closest(
+                '.sub-menu .menu-item-has-children > .sub-menu'
+            )
+            if (isFourthLevel) return
 
             ;(item as HTMLElement).addEventListener('mouseenter', () => {
                 item.classList.add('active')
@@ -246,29 +277,77 @@ class Navigation {
         )
     }
 
-    handleClick = () => {
-        this.navigationItems.forEach(item => {
-            if (item.classList.contains('menu-item-has-children')) {
-                const anchorElement = item.querySelector('a')
-                const submenu = item.querySelector('.sub-menu')
-                if (!anchorElement) return
-                ;(item as HTMLElement).style.maxHeight =
-                    `${anchorElement.clientHeight}px`
+    // After any item opens or closes, walk up the DOM and recalculate the
+    // max-height of every open ancestor so nested content is never clipped.
+    syncAncestorHeights = (fromItem: HTMLElement) => {
+        let ancestor = fromItem.parentElement?.closest<HTMLElement>(
+            '.menu-item-has-children'
+        )
 
-                anchorElement.addEventListener('click', event => {
-                    event.preventDefault()
-
-                    if (item.classList.contains('open')) {
-                        ;(item as HTMLElement).style.maxHeight =
-                            `${anchorElement.clientHeight}px`
-                        item.classList.remove('open')
-                    } else {
-                        ;(item as HTMLElement).style.maxHeight =
-                            `${anchorElement.clientHeight + (submenu?.clientHeight ?? 0) + 16}px`
-                        item.classList.add('open')
-                    }
-                })
+        while (ancestor) {
+            if (ancestor.classList.contains('open')) {
+                const anchor = ancestor.querySelector<HTMLElement>('a')
+                const submenu = ancestor.querySelector<HTMLElement>('.sub-menu')
+                if (anchor && submenu) {
+                    // scrollHeight forces a synchronous reflow so the value
+                    // already reflects the child's newly applied max-height.
+                    ancestor.style.maxHeight = `${anchor.clientHeight + submenu.scrollHeight + 16}px`
+                }
             }
+            ancestor = ancestor.parentElement?.closest<HTMLElement>(
+                '.menu-item-has-children'
+            )
+        }
+    }
+
+    handleClick = () => {
+        // Query only direct children of the top-level menu lists so nested
+        // items (2nd level and deeper) are never wired with accordion logic.
+        const topLevelItems =
+            this.navigationModal?.querySelectorAll<HTMLElement>(
+                '#menu-main-navigation > .menu-item-has-children, .menu-support > .menu-item-has-children'
+            ) ?? []
+
+        topLevelItems.forEach(item => {
+            // :scope > a ensures we only get the item's own direct anchor,
+            // never a nested anchor from a deeper level.
+            const anchorElement = item.querySelector<HTMLElement>(':scope > a')
+            const submenu = item.querySelector('.sub-menu')
+            if (!anchorElement) return
+            item.style.maxHeight = `${anchorElement.clientHeight}px`
+
+            anchorElement.addEventListener('click', event => {
+                event.preventDefault()
+
+                if (item.classList.contains('open')) {
+                    item.style.maxHeight = `${anchorElement.clientHeight}px`
+                    item.classList.remove('open')
+                } else {
+                    // Use scrollHeight (not clientHeight) so we measure
+                    // the submenu's full content, not the clipped portion.
+                    item.style.maxHeight = `${anchorElement.clientHeight + (submenu?.scrollHeight ?? 0) + 16}px`
+                    item.classList.add('open')
+                }
+
+                this.syncAncestorHeights(item)
+            })
+        })
+    }
+
+    // Delegated handler — ensures nested menu-item-has-children anchors always
+    // navigate, regardless of any upstream preventDefault call. Runs at the
+    // modal level so it catches all clicks inside the overlay.
+    handleNestedMenuNavigation = () => {
+        this.navigationModal?.addEventListener('click', event => {
+            const anchor = (event.target as Element).closest<HTMLAnchorElement>(
+                '.sub-menu .menu-item-has-children > a'
+            )
+            if (!anchor) return
+
+            const href = anchor.getAttribute('href')
+            if (!href || href === '#') return
+
+            window.location.href = href
         })
     }
 
@@ -276,13 +355,16 @@ class Navigation {
         window.addEventListener('resize', () => {
             if (window.innerWidth < 1024) {
                 setTimeout(() => {
-                    this.navigationItems.forEach(item => {
-                        if (item.classList.contains('menu-item-has-children')) {
-                            const anchorElement = item.querySelector('a')
-                            if (!anchorElement) return
-                            ;(item as HTMLElement).style.maxHeight =
-                                `${anchorElement.clientHeight}px`
-                        }
+                    const topLevelItems =
+                        this.navigationModal?.querySelectorAll<HTMLElement>(
+                            '#menu-main-navigation > .menu-item-has-children, .menu-support > .menu-item-has-children'
+                        ) ?? []
+
+                    topLevelItems.forEach(item => {
+                        const anchorElement =
+                            item.querySelector<HTMLElement>('a')
+                        if (!anchorElement) return
+                        item.style.maxHeight = `${anchorElement.clientHeight}px`
                     })
                 }, 200)
             }
@@ -293,8 +375,8 @@ class Navigation {
         this.handleScroll()
         this.handleNavigationModal()
         this.handleMenuItems()
-        this.handleMouseOutside()
         this.handleClick()
+        this.handleNestedMenuNavigation()
         this.handleResizing()
     }
 

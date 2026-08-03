@@ -18,6 +18,7 @@
 
     @include('partials.loader')
     @include('partials.navigation')
+    @include('partials.promo-banner')
 
     {{-- Nav is fixed-position; add top padding on non-homepage pages so content clears it --}}
     <main class="{{ !is_front_page() && !is_singular( 'plays' ) ? 'pt-24 md:pt-28' : '' }}">

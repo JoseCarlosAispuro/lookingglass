@@ -20,6 +20,7 @@ import pageLoader from './components/page-loader.ts'
 import playCalendar from './components/play-calendar.ts'
 import playsByMember from './components/plays-by-member.ts'
 import playsGrid from './components/plays-grid.ts'
+import promoBanner from './components/promo-banner.ts'
 import rippleBanner from './components/ripple-banner.ts'
 import scrollBackground from './components/scroll-background.ts'
 import scrolledPinFocusAreas from './components/scrolled-pin-focus-areas.ts'
@@ -65,6 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
     playsByMember()
     playCalendar()
     mobileAccordion()
+    promoBanner()
 })
 
 function init(): void {
